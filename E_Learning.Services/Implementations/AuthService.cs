@@ -12,6 +12,9 @@ using System.IdentityModel.Tokens.Jwt;
 
 namespace E_Learning.Services.Implementation;
 
+/// <summary>
+/// Provides authentication-related operations such as user registration and login.
+/// </summary>
 public class AuthService : IAuthService
 {
     private readonly UserManager<ApplicationUser> _userManager;
@@ -19,6 +22,13 @@ public class AuthService : IAuthService
     private readonly IMapper _mapper;
     private readonly IConfiguration _configuration;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="AuthService"/> class with dependencies.
+    /// </summary>
+    /// <param name="userManager">User manager for Identity operations.</param>
+    /// <param name="roleManager">Role manager for managing user roles.</param>
+    /// <param name="mapper">AutoMapper instance for model mapping.</param>
+    /// <param name="configuration">Application configuration for JWT settings.</param>
     public AuthService(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, IMapper mapper, IConfiguration configuration)
     {
         _userManager = userManager;
@@ -27,6 +37,12 @@ public class AuthService : IAuthService
         _configuration = configuration;
     }
 
+
+    /// <summary>
+    /// Registers a new user with a specified or default role.
+    /// </summary>
+    /// <param name="request">The registration request containing user details.</param>
+    /// <returns>result of the registration.</returns>
     public async Task<string> RegisterAsync(RegisterRequest request)
     {
         var existingUser = await _userManager.FindByEmailAsync(request.Email);
@@ -51,6 +67,12 @@ public class AuthService : IAuthService
     }
 
 
+    /// <summary>
+    /// Authenticates a user and generates a JWT token with role claims.
+    /// </summary>
+    /// <param name="request">The login request containing email and password.</param>
+    /// <returns>JWT token string if authentication is successful.</returns>
+    /// <exception cref="UnauthorizedAccessException">Thrown if credentials are invalid.</exception>
     public async Task<string> LoginAsync(LoginRequest request)
     {
         var user = await _userManager.FindByEmailAsync(request.Email);
@@ -77,6 +99,18 @@ public class AuthService : IAuthService
         );
 
         return new JwtSecurityTokenHandler().WriteToken(token);
+    }
 
+    public async Task<List<UserResponse>> GetAllUsersAsync()
+    {
+        var users = _userManager.Users.ToList();
+        var mappedUsers = _mapper.Map<List<UserResponse>>(users);
+
+        for (int i = 0; i < users.Count; i++)
+        {
+            var roles = await _userManager.GetRolesAsync(users[i]);
+            mappedUsers[i].Roles = roles;
+        }
+        return mappedUsers;
     }
 }
