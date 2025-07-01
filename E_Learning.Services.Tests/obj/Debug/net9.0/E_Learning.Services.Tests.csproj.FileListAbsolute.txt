@@ -27,6 +27,10 @@
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Services.Tests/bin/Debug/net9.0/Microsoft.Extensions.Logging.Abstractions.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Services.Tests/bin/Debug/net9.0/Microsoft.Extensions.Options.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Services.Tests/bin/Debug/net9.0/Microsoft.Extensions.Primitives.dll
+/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Services.Tests/bin/Debug/net9.0/Microsoft.IdentityModel.Abstractions.dll
+/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Services.Tests/bin/Debug/net9.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Services.Tests/bin/Debug/net9.0/Microsoft.IdentityModel.Logging.dll
+/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Services.Tests/bin/Debug/net9.0/Microsoft.IdentityModel.Tokens.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Services.Tests/bin/Debug/net9.0/Microsoft.TestPlatform.CoreUtilities.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Services.Tests/bin/Debug/net9.0/Microsoft.TestPlatform.PlatformAbstractions.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Services.Tests/bin/Debug/net9.0/Microsoft.VisualStudio.TestPlatform.ObjectModel.dll
@@ -38,6 +42,7 @@
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Services.Tests/bin/Debug/net9.0/Newtonsoft.Json.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Services.Tests/bin/Debug/net9.0/Npgsql.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Services.Tests/bin/Debug/net9.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
+/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Services.Tests/bin/Debug/net9.0/System.IdentityModel.Tokens.Jwt.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Services.Tests/bin/Debug/net9.0/xunit.abstractions.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Services.Tests/bin/Debug/net9.0/xunit.assert.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Services.Tests/bin/Debug/net9.0/xunit.core.dll
@@ -118,6 +123,7 @@
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Services.Tests/obj/Debug/net9.0/E_Learning.Services.Tests.AssemblyInfoInputs.cache
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Services.Tests/obj/Debug/net9.0/E_Learning.Services.Tests.AssemblyInfo.cs
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Services.Tests/obj/Debug/net9.0/E_Learning.Services.Tests.csproj.CoreCompileInputs.cache
+/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Services.Tests/obj/Debug/net9.0/E_Learning.Services.Tests.sourcelink.json
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Services.Tests/obj/Debug/net9.0/E_Learni.7BE95A1B.Up2Date
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Services.Tests/obj/Debug/net9.0/E_Learning.Services.Tests.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Services.Tests/obj/Debug/net9.0/refint/E_Learning.Services.Tests.dll

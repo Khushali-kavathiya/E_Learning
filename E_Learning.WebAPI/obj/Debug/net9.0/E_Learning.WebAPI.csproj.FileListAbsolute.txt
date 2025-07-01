@@ -37,6 +37,10 @@
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/Microsoft.Extensions.Logging.Abstractions.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/Microsoft.Extensions.Options.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/Microsoft.Extensions.Primitives.dll
+/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/Microsoft.IdentityModel.Abstractions.dll
+/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/Microsoft.IdentityModel.Logging.dll
+/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/Microsoft.IdentityModel.Tokens.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/Microsoft.OpenApi.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/Mono.TextTemplating.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/Npgsql.dll
@@ -50,6 +54,7 @@
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/System.Composition.Hosting.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/System.Composition.Runtime.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/System.Composition.TypedParts.dll
+/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/System.IdentityModel.Tokens.Jwt.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/cs/Microsoft.CodeAnalysis.resources.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/de/Microsoft.CodeAnalysis.resources.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/es/Microsoft.CodeAnalysis.resources.dll
@@ -131,6 +136,7 @@
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/obj/Debug/net9.0/E_Learning.WebAPI.csproj.CoreCompileInputs.cache
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/obj/Debug/net9.0/E_Learning.WebAPI.MvcApplicationPartsAssemblyInfo.cs
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/obj/Debug/net9.0/E_Learning.WebAPI.MvcApplicationPartsAssemblyInfo.cache
+/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/obj/Debug/net9.0/E_Learning.WebAPI.sourcelink.json
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/obj/Debug/net9.0/rjimswa.dswa.cache.json
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/obj/Debug/net9.0/rjsmrazor.dswa.cache.json
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/obj/Debug/net9.0/rjsmcshtml.dswa.cache.json

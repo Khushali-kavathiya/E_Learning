@@ -12,6 +12,7 @@
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Extensions/obj/Debug/net9.0/E_Learning.Extensions.AssemblyInfoInputs.cache
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Extensions/obj/Debug/net9.0/E_Learning.Extensions.AssemblyInfo.cs
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Extensions/obj/Debug/net9.0/E_Learning.Extensions.csproj.CoreCompileInputs.cache
+/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Extensions/obj/Debug/net9.0/E_Learning.Extensions.sourcelink.json
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Extensions/obj/Debug/net9.0/E_Learni.A07AB4C5.Up2Date
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Extensions/obj/Debug/net9.0/E_Learning.Extensions.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Extensions/obj/Debug/net9.0/refint/E_Learning.Extensions.dll
