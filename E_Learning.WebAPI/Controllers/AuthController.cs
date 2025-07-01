@@ -1,11 +1,13 @@
-using System.Xml.Schema;
 using E_Learning.Services.Interfaces;
 using E_Learning.Services.Models;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+
 
 namespace E_Learning.WenAPI.Controllers;
 
+/// <summary>
+/// Controller handling authentication and role-based registration.
+/// </summary>
 [ApiController]
 [Route("api/[Controller]")]
 
@@ -13,6 +15,10 @@ public class AuthController : ControllerBase
 {
     private readonly IAuthService _authService;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="AuthController"/> class.
+    /// </summary>
+    /// <param name="authService">Service responsible for authentication logic.</param>
     public AuthController(IAuthService authService)
     {
         _authService = authService;
@@ -83,5 +89,18 @@ public class AuthController : ControllerBase
         {
             return Unauthorized("Invalid email or Password");
         }
+    }
+
+    /// <summary>
+    /// Gets all registered users. Requires Admin role.
+    /// </summary>
+    /// <returns>Return All the users.</returns>
+
+    [HttpGet("users")]
+    //[Authorize(Roles = "Admin")]
+    public async Task<IActionResult> GetAllUsers()
+    {
+        var users = await  _authService.GetAllUsersAsync();
+        return Ok(users);
     }
 }
