@@ -23,4 +23,11 @@ public interface IAuthService
     /// </summary>
     /// <returns>List of users.</returns>
     Task<List<UserResponse>> GetAllUsersAsync();
+
+    /// <summary>
+    /// Retrieves a user by their email address.
+    /// </summary>
+    /// <param name="email">The email address of the user.</param>
+    /// <returns>User details with roles.</returns>
+    Task<UserResponse> GetUserByEmailAsync(string email);
 }

@@ -100,7 +100,28 @@ public class AuthController : ControllerBase
     //[Authorize(Roles = "Admin")]
     public async Task<IActionResult> GetAllUsers()
     {
-        var users = await  _authService.GetAllUsersAsync();
+        var users = await _authService.GetAllUsersAsync();
         return Ok(users);
     }
+
+    /// <summary>
+    /// Get UserByEmail.
+    /// </summary>
+    /// <param name="email">Get User using email.</param>
+    /// <returns></returns>
+
+    [HttpGet("user/{email}")]
+    public async Task<IActionResult> GetUserByEmail([FromRoute] string email)
+    {
+        try
+        {
+            var user = await _authService.GetUserByEmailAsync(email);
+            return Ok(user);
+        }
+        catch (Exception)
+        {
+            return NotFound();
+        }        
+    }
+
 }

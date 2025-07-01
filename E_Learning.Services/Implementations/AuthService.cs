@@ -113,4 +113,23 @@ public class AuthService : IAuthService
         }
         return mappedUsers;
     }
+
+
+    /// <summary>
+    /// Retrieves a user by email and maps to UserResponse with roles.
+    /// </summary>
+    /// <param name="email">Email of the user.</param>
+    public async Task<UserResponse> GetUserByEmailAsync(string email)
+    {
+        var user = await _userManager.FindByEmailAsync(email);
+        if (user == null)
+            throw new Exception("User not found");
+        var mappedUsers = _mapper.Map<UserResponse>(user);
+
+        var role = await _userManager.GetRolesAsync(user);
+        mappedUsers.Roles = role;
+
+        return mappedUsers;
+    }
+
 }
