@@ -8,6 +8,7 @@
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Repositories/obj/Debug/net9.0/E_Learning.Repositories.AssemblyInfoInputs.cache
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Repositories/obj/Debug/net9.0/E_Learning.Repositories.AssemblyInfo.cs
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Repositories/obj/Debug/net9.0/E_Learning.Repositories.csproj.CoreCompileInputs.cache
+/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Repositories/obj/Debug/net9.0/E_Learning.Repositories.sourcelink.json
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Repositories/obj/Debug/net9.0/E_Learni.E4839D4F.Up2Date
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Repositories/obj/Debug/net9.0/E_Learning.Repositories.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Repositories/obj/Debug/net9.0/refint/E_Learning.Repositories.dll
