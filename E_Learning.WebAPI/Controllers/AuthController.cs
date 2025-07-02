@@ -121,7 +121,47 @@ public class AuthController : ControllerBase
         catch (Exception)
         {
             return NotFound();
-        }        
+        }
     }
 
+    /// <summary>
+    /// Updates user information by email.
+    /// </summary>
+    /// <param name="email">Email of the user to update.</param>
+    /// <param name="request">New profile data.</param>
+    /// <returns>Status message.</returns>
+
+    [HttpPut("update-User/{email}")]
+    public async Task<IActionResult> UpdateUser([FromRoute] string email, [FromBody] UpdateRequest request)
+    {
+        try
+        {
+            var result = await _authService.UpdateUserAsync(email, request);
+            return Ok(new { message = result });
+        }
+        catch (Exception)
+        {
+            return NotFound();
+        }
+    }
+
+    /// <summary>
+    /// Deletes a user by email.
+    /// </summary>
+    /// <param name="email">Email of the user to delete.</param>
+    /// <returns>Status message.</returns>
+
+    [HttpDelete("delete-User/{email}")]
+    public async Task<IActionResult> DeleteUser([FromRoute] string email)
+    {
+        try
+        {
+            var result = await _authService.DeleteUserAsync(email);
+            return Ok(new { message = result });
+        }
+        catch (Exception)
+        {
+            return NotFound();
+        }             
+    }
 }

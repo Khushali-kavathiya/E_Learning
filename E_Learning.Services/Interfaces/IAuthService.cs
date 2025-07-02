@@ -30,4 +30,20 @@ public interface IAuthService
     /// <param name="email">The email address of the user.</param>
     /// <returns>User details with roles.</returns>
     Task<UserResponse> GetUserByEmailAsync(string email);
+
+    /// <summary>
+    /// Updates a user's information based on their email address.
+    /// </summary>
+    /// <param name="email">The email address of the user to update.</param>
+    /// <param name="request">The update request containing new user details.</param>
+    /// <returns>A string message indicating success or error.</returns>
+    Task<string> UpdateUserAsync(string email, UpdateRequest request);
+
+
+    /// <summary>
+    /// Deletes a user by their email.
+    /// </summary>
+    /// <param name="email">The email of the user to delete.</param>
+    /// <returns>A string message indicating success or error.</returns>
+    Task<string> DeleteUserAsync(string email);
 }
