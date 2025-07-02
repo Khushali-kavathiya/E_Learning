@@ -101,6 +101,11 @@ public class AuthService : IAuthService
         return new JwtSecurityTokenHandler().WriteToken(token);
     }
 
+    /// <summary>
+    /// Retrieves all registered users and maps them to UserResponse with roles.
+    /// </summary>
+    /// <returns>List of UserResponse containing user details and roles.</returns>
+
     public async Task<List<UserResponse>> GetAllUsersAsync()
     {
         var users = _userManager.Users.ToList();
@@ -119,6 +124,7 @@ public class AuthService : IAuthService
     /// Retrieves a user by email and maps to UserResponse with roles.
     /// </summary>
     /// <param name="email">Email of the user.</param>
+    /// <returns>UserResponse containing user details and roles.</returns>
     public async Task<UserResponse> GetUserByEmailAsync(string email)
     {
         var user = await _userManager.FindByEmailAsync(email);
@@ -132,4 +138,41 @@ public class AuthService : IAuthService
         return mappedUsers;
     }
 
+
+    /// <summary>
+    /// Updates a user's information.
+    /// </summary>
+    /// <param name="email">email of the user to update.</param>
+    /// <param name="request">new profile Data.</param>
+    /// <returns>string message.</returns>
+    public async Task<string> UpdateUserAsync(string email, UpdateRequest request)
+    {
+        var user = await _userManager.FindByEmailAsync(email);
+        if (user == null)
+            return "User not found.";
+
+        user.FullName = request.FullName;
+
+        var result = await _userManager.UpdateAsync(user);
+        if (!result.Succeeded)
+            return string.Join(", ", result.Errors.Select(e => e.Description));
+        return "User updated successfully.";
+    }
+
+    /// <summary>
+    /// Deletes a user by email.
+    /// </summary>
+    /// <param name="email">The email of the user to delete.</param>
+    /// <returns>A string message indicating success or error.</returns>    
+    public async Task<string> DeleteUserAsync(string email)
+    {
+        var user = await _userManager.FindByEmailAsync(email);
+        if (user == null)
+            return "User not found.";
+
+        var result = await _userManager.DeleteAsync(user);
+        if (!result.Succeeded)
+            return string.Join(", ", result.Errors.Select(e => e.Description));
+        return "User deleted successfully.";
+    }
 }
