@@ -1,4 +1,5 @@
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Repositories/bin/Debug/net9.0/E_Learning.Repositories.deps.json
+/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Repositories/bin/Debug/net9.0/E_Learning.Repositories.runtimeconfig.json
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Repositories/bin/Debug/net9.0/E_Learning.Repositories.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Repositories/bin/Debug/net9.0/E_Learning.Repositories.pdb
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Repositories/bin/Debug/net9.0/E_Learning.Domain.dll
@@ -13,4 +14,5 @@
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Repositories/obj/Debug/net9.0/E_Learning.Repositories.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Repositories/obj/Debug/net9.0/refint/E_Learning.Repositories.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Repositories/obj/Debug/net9.0/E_Learning.Repositories.pdb
+/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Repositories/obj/Debug/net9.0/E_Learning.Repositories.genruntimeconfig.cache
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Repositories/obj/Debug/net9.0/ref/E_Learning.Repositories.dll

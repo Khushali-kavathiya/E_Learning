@@ -189,6 +189,12 @@
               "target": "Package",
               "version": "[9.0.6, )"
             },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.6, )"
+            },
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
               "version": "[9.0.4, )"
@@ -431,6 +437,18 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "FluentValidation.AspNetCore": {
+              "target": "Package",
+              "version": "[11.3.1, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[9.0.6, )"
+            },
+            "Microsoft.AspNetCore.JsonPatch": {
+              "target": "Package",
+              "version": "[9.0.6, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[9.0.6, )"
