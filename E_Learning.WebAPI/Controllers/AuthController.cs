@@ -1,167 +1,64 @@
-using E_Learning.Services.Interfaces;
-using E_Learning.Services.Models;
+using E_Learning.WebAPI.Contracts;
+using E_Learning.Services.Interface;
 using Microsoft.AspNetCore.Mvc;
+using AutoMapper;
+using E_Learning.Services.Models;
 
+namespace E_Learning.WebAPI.Controllers;
 
-namespace E_Learning.WenAPI.Controllers;
-
-/// <summary>
-/// Controller handling authentication and role-based registration.
-/// </summary>
+// <summary>
+// AuthController class handles user authentication and registration.
+// It provides endpoints for user registration and login.
+// </summary>
 [ApiController]
-[Route("api/[Controller]")]
+[Route("api/[controller]")]
 
 public class AuthController : ControllerBase
 {
     private readonly IAuthService _authService;
+    private readonly IMapper _mapper;
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="AuthController"/> class.
-    /// </summary>
-    /// <param name="authService">Service responsible for authentication logic.</param>
-    public AuthController(IAuthService authService)
+    public AuthController(IAuthService authService, IMapper mapper)
     {
         _authService = authService;
+        _mapper = mapper;
     }
 
     /// <summary>
-    /// Public Registraion for students
+    /// Registers a new user with the provided contract.
+    /// Maps the contract to a model, creates the user, and adds them to a specified role.
     /// </summary>
-    /// <param name="request"></param>
-    /// <returns></returns>
+    /// <param name="contract">The contract containing user registration details.</param>
+    /// <returns>Returns a success message if registration is successful, otherwise returns a bad request with errors.</returns>
 
-    [HttpPost("register-student")]
-    // [AllowAnonymous]
-    public async Task<IActionResult> RegisterStudent([FromBody] RegisterRequest request)
+    [HttpPost("register")]
+    public async Task<IActionResult> Register([FromBody] RegisterUserContract contract)
     {
-        request.Role = "Student";
-        var result = await _authService.RegisterAsync(request);
-        return Ok(new { message = result });
-    }
+        var model = _mapper.Map<RegisterUserModel>(contract);
+        var result = await _authService.RegisterAsync(model);
 
+        if (!result.Succeeded)
+            return BadRequest(result.Errors);
 
-    /// <summary>
-    /// Admin-only registration for instructor
-    /// </summary>
-    /// <param name="request"></param>
-    /// <returns></returns>
-
-    [HttpPost("register-instructor")]
-    // [Authorize(Roles = "Admin")]
-    public async Task<IActionResult> RegisterInstructor([FromBody] RegisterRequest request)
-    {
-        request.Role = "Instructor";
-        var result = await _authService.RegisterAsync(request);
-        return Ok(new { message = result });
+        return Ok($"{contract.Role} User registered successfully.");
     }
 
     /// <summary>
-    /// Admin-only registration for admins
+    /// Logs in a user with the provided contract.
+    /// Validates the user's email and password, and generates a JWT token if successful.
     /// </summary>
-    /// <param name="request"></param>
-    /// <returns></returns>
+    /// <param name="contract">The contract containing user login details.</param>
+    /// <returns>Returns a JWT token if login is successful, otherwise returns an unauthorized response with an error message.</returns>
 
-    [HttpPost("register-admin")]
-    //[Authorize(Roles = "Admin")]
-    public async Task<IActionResult> RegisterAdmin([FromBody] RegisterRequest request)
+    [HttpPost("login")]
+    public async Task<IActionResult> Login([FromBody] LoginRequest contract)
     {
-        request.Role = "Admin";
-        var result = await _authService.RegisterAsync(request);
-        return Ok(new { message = result });
-    }
+        var serviceRequest = _mapper.Map<LoginRequestModel>(contract);
+        var token = await _authService.LoginAsync(serviceRequest);
 
+        if (token == null)
+            return Unauthorized("Invalid credentials");
 
-    /// <summary>
-    /// Handles authentication-related endpoints.
-    /// </summary>
-    /// <param name="request"></param>
-    /// <returns></returns>
-
-    [HttpPost("Login")]
-    public async Task<IActionResult> Login([FromBody] LoginRequest request)
-    {
-        try
-        {
-            var token = await _authService.LoginAsync(request);
-            return Ok(token);
-        }
-        catch (UnauthorizedAccessException)
-        {
-            return Unauthorized("Invalid email or Password");
-        }
-    }
-
-    /// <summary>
-    /// Gets all registered users. Requires Admin role.
-    /// </summary>
-    /// <returns>Return All the users.</returns>
-
-    [HttpGet("users")]
-    //[Authorize(Roles = "Admin")]
-    public async Task<IActionResult> GetAllUsers()
-    {
-        var users = await _authService.GetAllUsersAsync();
-        return Ok(users);
-    }
-
-    /// <summary>
-    /// Get UserByEmail.
-    /// </summary>
-    /// <param name="email">Get User using email.</param>
-    /// <returns></returns>
-
-    [HttpGet("user/{email}")]
-    public async Task<IActionResult> GetUserByEmail([FromRoute] string email)
-    {
-        try
-        {
-            var user = await _authService.GetUserByEmailAsync(email);
-            return Ok(user);
-        }
-        catch (Exception)
-        {
-            return NotFound();
-        }
-    }
-
-    /// <summary>
-    /// Updates user information by email.
-    /// </summary>
-    /// <param name="email">Email of the user to update.</param>
-    /// <param name="request">New profile data.</param>
-    /// <returns>Status message.</returns>
-
-    [HttpPut("update-User/{email}")]
-    public async Task<IActionResult> UpdateUser([FromRoute] string email, [FromBody] UpdateRequest request)
-    {
-        try
-        {
-            var result = await _authService.UpdateUserAsync(email, request);
-            return Ok(new { message = result });
-        }
-        catch (Exception)
-        {
-            return NotFound();
-        }
-    }
-
-    /// <summary>
-    /// Deletes a user by email.
-    /// </summary>
-    /// <param name="email">Email of the user to delete.</param>
-    /// <returns>Status message.</returns>
-
-    [HttpDelete("delete-User/{email}")]
-    public async Task<IActionResult> DeleteUser([FromRoute] string email)
-    {
-        try
-        {
-            var result = await _authService.DeleteUserAsync(email);
-            return Ok(new { message = result });
-        }
-        catch (Exception)
-        {
-            return NotFound();
-        }             
+        return Ok(new { token });    
     }
 }

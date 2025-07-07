@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>E_Learning.WebAPI</name>
+    </assembly>
+    <members>
+        <member name="P:E_Learning.WebAPI.Contracts.LoginRequest.Email">
+            <summary>
+            Gets or sets the email of the user attempting to log in.
+            </summary>
+        </member>
+        <member name="P:E_Learning.WebAPI.Contracts.LoginRequest.Password">
+            <summary>
+            Gets or sets the password of the user attempting to log in.
+            </summary>
+        </member>
+        <member name="P:E_Learning.WebAPI.Contracts.RegisterUserContract.Email">
+            <summary>
+            Gets or sets the email of the user.
+            </summary>
+        </member>
+        <member name="P:E_Learning.WebAPI.Contracts.RegisterUserContract.Password">
+            <summary>
+            Gets or sets the password of the user.
+            </summary>
+        </member>
+        <member name="P:E_Learning.WebAPI.Contracts.RegisterUserContract.FullName">
+            <summary>
+            Gets or sets the full name of the user.
+            </summary>
+        </member>
+        <member name="P:E_Learning.WebAPI.Contracts.RegisterUserContract.Role">
+            <summary>       
+            Gets or sets the role of the user.
+            </summary>
+        </member>
+        <member name="M:E_Learning.WebAPI.Controllers.AuthController.Register(E_Learning.WebAPI.Contracts.RegisterUserContract)">
+            <summary>
+            Registers a new user with the provided contract.
+            Maps the contract to a model, creates the user, and adds them to a specified role.
+            </summary>
+            <param name="contract">The contract containing user registration details.</param>
+            <returns>Returns a success message if registration is successful, otherwise returns a bad request with errors.</returns>
+        </member>
+        <member name="M:E_Learning.WebAPI.Controllers.AuthController.Login(E_Learning.WebAPI.Contracts.LoginRequest)">
+            <summary>
+            Logs in a user with the provided contract.
+            Validates the user's email and password, and generates a JWT token if successful.
+            </summary>
+            <param name="contract">The contract containing user login details.</param>
+            <returns>Returns a JWT token if login is successful, otherwise returns an unauthorized response with an error message.</returns>
+        </member>
+        <member name="T:E_Learning.WebAPI.Middlewares.ExceptionMiddleware">
+            <summary>
+            Global exception handling.
+            </summary>
+        </member>
+    </members>
+</doc>

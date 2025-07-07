@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\E_Learning.Repositories\E_Learning.Repositories.csproj" />
     <ProjectReference Include="..\E_Learning.Domain\E_Learning.Domain.csproj" />
+    <ProjectReference Include="..\E_Learning.Repositories\E_Learning.Repositories.csproj" />
   </ItemGroup>
 
   <ItemGroup>
