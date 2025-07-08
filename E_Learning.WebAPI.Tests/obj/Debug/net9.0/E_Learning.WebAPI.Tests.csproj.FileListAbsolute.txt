@@ -23,8 +23,17 @@
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/Microsoft.AspNetCore.JsonPatch.dll
+/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
+/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/Microsoft.AspNetCore.Mvc.Versioning.dll
+/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/Microsoft.AspNetCore.OpenApi.dll
+/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/Microsoft.AspNetCore.Razor.Language.dll
+/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/Microsoft.CodeAnalysis.dll
+/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/Microsoft.CodeAnalysis.CSharp.dll
+/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/Microsoft.CodeAnalysis.Razor.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/Microsoft.VisualStudio.CodeCoverage.Shim.dll
+/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/Microsoft.DotNet.PlatformAbstractions.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/Microsoft.EntityFrameworkCore.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/Microsoft.EntityFrameworkCore.Abstractions.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/Microsoft.EntityFrameworkCore.Relational.dll
@@ -33,6 +42,7 @@
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/Microsoft.Extensions.Configuration.Abstractions.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/Microsoft.Extensions.DependencyInjection.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/Microsoft.Extensions.DependencyModel.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/Microsoft.Extensions.Identity.Core.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/Microsoft.Extensions.Identity.Stores.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/Microsoft.Extensions.Logging.dll
@@ -55,6 +65,7 @@
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/Microsoft.VisualStudio.TestPlatform.Common.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/testhost.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/Newtonsoft.Json.dll
+/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/Newtonsoft.Json.Bson.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/Npgsql.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/Swashbuckle.AspNetCore.Swagger.dll
@@ -136,6 +147,7 @@
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/E_Learning.Services.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/E_Learning.WebAPI.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/E_Learning.WebAPI.pdb
+/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/E_Learning.WebAPI.xml
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/E_Learning.Services.pdb
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/E_Learning.Domain.pdb
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/E_Learning.Extensions.pdb

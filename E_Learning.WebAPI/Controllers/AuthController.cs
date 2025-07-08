@@ -3,6 +3,9 @@ using E_Learning.Services.Interface;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 using E_Learning.Services.Models;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
 
 namespace E_Learning.WebAPI.Controllers;
 
@@ -11,7 +14,9 @@ namespace E_Learning.WebAPI.Controllers;
 // It provides endpoints for user registration and login.
 // </summary>
 [ApiController]
-[Route("api/[controller]")]
+[ApiVersion("1.0")]
+[Route("[controller]")]
+[Authorize]
 
 public class AuthController : ControllerBase
 {
@@ -51,6 +56,7 @@ public class AuthController : ControllerBase
     /// <returns>Returns a JWT token if login is successful, otherwise returns an unauthorized response with an error message.</returns>
 
     [HttpPost("login")]
+    [AllowAnonymous]
     public async Task<IActionResult> Login([FromBody] LoginRequest contract)
     {
         var serviceRequest = _mapper.Map<LoginRequestModel>(contract);
@@ -59,6 +65,35 @@ public class AuthController : ControllerBase
         if (token == null)
             return Unauthorized("Invalid credentials");
 
-        return Ok(new { token });    
+        return Ok(new { token });
     }
+
+
+    /// <summary>
+    /// Retrieves the current user's profile based on their user ID.
+    /// </summary>
+    /// <returns>Returns the user's profile if found, otherwise returns a not found response.</returns>
+
+    [HttpGet("profile")]
+    public async Task<IActionResult> GetCurrentUserProfile()
+    {
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (string.IsNullOrEmpty(userId))
+            return Unauthorized("Invalid Or missing Token");
+
+        var userProfile = await _authService.GetCurrentUserProfileAsync(userId);
+        if (userProfile == null)
+            return NotFound("User profile not found");
+
+        var response = _mapper.Map<UserProfileResponse>(userProfile);
+        return Ok(response);
+    }
+
+    [HttpGet("hello")]
+   // [AllowAnonymous]
+    public IActionResult SayHello()
+    {
+        return Ok("Hello, World!");
+    }
+
 }

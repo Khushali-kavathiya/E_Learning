@@ -24,4 +24,9 @@ public interface IAuthRepository
     /// Checks if the provided password matches the user's password.
     /// </summary>
     Task<bool> CheckPasswordAsync(ApplicationUser applicationUser, string password);
+
+    /// <summary>
+    /// Finds a user by their ID.
+    /// </summary>
+    Task<ApplicationUser> GetUserByIdAsync(string userId);
 }

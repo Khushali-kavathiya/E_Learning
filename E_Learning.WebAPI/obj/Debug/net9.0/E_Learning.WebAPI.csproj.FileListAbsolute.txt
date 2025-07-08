@@ -6,6 +6,7 @@
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/E_Learning.WebAPI.runtimeconfig.json
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/E_Learning.WebAPI.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/E_Learning.WebAPI.pdb
+/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/E_Learning.WebAPI.xml
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/AutoMapper.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/FluentValidation.dll
@@ -17,12 +18,18 @@
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/Microsoft.AspNetCore.JsonPatch.dll
+/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
+/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/Microsoft.AspNetCore.Mvc.Versioning.dll
+/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/Microsoft.AspNetCore.OpenApi.dll
+/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/Microsoft.AspNetCore.Razor.Language.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/Microsoft.Bcl.AsyncInterfaces.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/Microsoft.Build.Locator.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/Microsoft.CodeAnalysis.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/Microsoft.CodeAnalysis.CSharp.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/Microsoft.CodeAnalysis.Razor.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/Microsoft.CodeAnalysis.Workspaces.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
@@ -51,6 +58,7 @@
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/Microsoft.OpenApi.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/Mono.TextTemplating.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/Newtonsoft.Json.dll
+/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/Newtonsoft.Json.Bson.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/Npgsql.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/Swashbuckle.AspNetCore.Swagger.dll
@@ -156,8 +164,7 @@
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/obj/Debug/net9.0/E_Learni.61A7C08B.Up2Date
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/obj/Debug/net9.0/E_Learning.WebAPI.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/obj/Debug/net9.0/refint/E_Learning.WebAPI.dll
+/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/obj/Debug/net9.0/E_Learning.WebAPI.xml
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/obj/Debug/net9.0/E_Learning.WebAPI.pdb
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/obj/Debug/net9.0/E_Learning.WebAPI.genruntimeconfig.cache
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/obj/Debug/net9.0/ref/E_Learning.WebAPI.dll
-/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/E_Learning.WebAPI.xml
-/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/obj/Debug/net9.0/E_Learning.WebAPI.xml

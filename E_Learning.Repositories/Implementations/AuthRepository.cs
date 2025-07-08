@@ -1,6 +1,7 @@
 using E_Learning.Domain.Entities;
 using E_Learning.Repositories.Interface;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace E_Learning.Repositories.Implementations;
 
@@ -58,6 +59,16 @@ public class AuthRepository : IAuthRepository
     public async Task<bool> CheckPasswordAsync(ApplicationUser applicationUser, string password)
     {
         return await _userManager.CheckPasswordAsync(applicationUser, password);
+    }
+
+    /// <summary>
+    /// Finds a user by their ID.
+    /// </summary>
+    /// <param name="userId">The ID of the user to be retrieved.</param>
+    /// <returns>The user with the specified ID, or null if not found.</returns>
+    public async Task<ApplicationUser> GetUserByIdAsync(string userId)
+    {
+        return await _userManager.Users.AsNoTracking().FirstOrDefaultAsync(u => u.Id == userId);
     }
 
 }
