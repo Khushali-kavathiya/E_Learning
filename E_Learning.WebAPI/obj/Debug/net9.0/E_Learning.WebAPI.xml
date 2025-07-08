@@ -34,6 +34,31 @@
             Gets or sets the role of the user.
             </summary>
         </member>
+        <member name="T:E_Learning.WebAPI.Contracts.UserProfileResponse">
+            <summary>
+            Represents the response containing user profile information.
+            </summary>
+        </member>
+        <member name="P:E_Learning.WebAPI.Contracts.UserProfileResponse.Id">
+            <summary>
+            unique identifier of the user.
+            </summary>
+        </member>
+        <member name="P:E_Learning.WebAPI.Contracts.UserProfileResponse.Email">
+            <summary>
+            email address of the user.
+            </summary>
+        </member>
+        <member name="P:E_Learning.WebAPI.Contracts.UserProfileResponse.FullName">
+            <summary>
+            full name of the user.
+            </summary>
+        </member>
+        <member name="P:E_Learning.WebAPI.Contracts.UserProfileResponse.UserName">
+            <summary>
+            username of the user.
+            </summary>
+        </member>
         <member name="M:E_Learning.WebAPI.Controllers.AuthController.Register(E_Learning.WebAPI.Contracts.RegisterUserContract)">
             <summary>
             Registers a new user with the provided contract.
@@ -49,6 +74,17 @@
             </summary>
             <param name="contract">The contract containing user login details.</param>
             <returns>Returns a JWT token if login is successful, otherwise returns an unauthorized response with an error message.</returns>
+        </member>
+        <member name="M:E_Learning.WebAPI.Controllers.AuthController.GetCurrentUserProfile">
+            <summary>
+            Retrieves the current user's profile based on their user ID.
+            </summary>
+            <returns>Returns the user's profile if found, otherwise returns a not found response.</returns>
+        </member>
+        <member name="T:E_Learning.WebAPI.Mapping.AuthContractModelMapperProfile">
+            <summary>
+            AutoMapper profile for mapping between contract and model classes related to authentication.
+            </summary>
         </member>
         <member name="T:E_Learning.WebAPI.Middlewares.ExceptionMiddleware">
             <summary>

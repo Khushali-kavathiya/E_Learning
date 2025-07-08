@@ -57,4 +57,15 @@ public class AuthService : IAuthService
 
         return _jwtTokensService.GenerateToken(user);
     }
+
+    /// <summary>
+    /// Retrieves the current user's profile based on their user ID.
+    /// </summary>
+    /// <param name="userId">The ID of the user whose profile is to be retrieved.</param>
+    /// <returns>A UserProfileModel containing the user's profile information, or null if the user is not found.</returns>
+    public async Task<UserProfileModel> GetCurrentUserProfileAsync(string userId)
+    {
+        var user = await _userReposity.GetUserByIdAsync(userId);
+        return user == null ? null : _mapper.Map<UserProfileModel>(user);
+    }
 }
