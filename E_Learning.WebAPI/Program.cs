@@ -18,9 +18,35 @@ using System.Reflection;
 using E_Learning.Extensions.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
-using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Configure global API Versioning and validation
+builder.Services.AddControllers(options =>
+{
+    options.Conventions.Insert(0, new GlobalRoutePrefixConvention("api/v{version:apiVersion}"));
+})
+.AddNewtonsoftJson(options =>
+{   
+    // This is what fixes enum serialization when using Newtonsoft
+    options.SerializerSettings.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter());
+}) // This is required for JsonPatchDocument
+.AddFluentValidation(config =>
+{
+    config.RegisterValidatorsFromAssemblyContaining<UserContractValidator>();
+    config.RegisterValidatorsFromAssemblyContaining<CourseContractValidator>();
+});
+
+
+
+builder.Services.AddApiVersioning(options =>
+{
+    options.DefaultApiVersion = new ApiVersion(1, 0);
+    options.AssumeDefaultVersionWhenUnspecified = true;
+    options.ReportApiVersions = true;
+    options.ApiVersionReader = new UrlSegmentApiVersionReader();
+});
 
 // Register Swagger/OpenAPI for API documentation and testing
 builder.Services.AddEndpointsApiExplorer();
@@ -56,25 +82,6 @@ builder.Services.AddSwaggerGen(options =>
 });
     var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
-});
-
-// Configure global API Versioning and validation
-builder.Services.AddControllers(options =>
-{
-    options.Conventions.Insert(0, new GlobalRoutePrefixConvention("api/v{version:apiVersion}"));
-})
-.AddFluentValidation(config =>
-{
-    config.RegisterValidatorsFromAssemblyContaining<RegisterUserContractValidator>();
-});
-
-
-builder.Services.AddApiVersioning(options =>
-{
-    options.DefaultApiVersion = new ApiVersion(1, 0);
-    options.AssumeDefaultVersionWhenUnspecified = true;
-    options.ReportApiVersions = true;
-    options.ApiVersionReader = new UrlSegmentApiVersionReader();
 });
 
 // Configure PostgreSQL database with Entity Framework Core
@@ -116,9 +123,11 @@ builder.Services.AddAuthorization();
 
 
 // Register Services 
-builder.Services.AddScoped<IAuthService, AuthService>();
-builder.Services.AddScoped<IAuthRepository, AuthRepository>();
+builder.Services.AddScoped<IUsersService, UsersService>();
+builder.Services.AddScoped<IUsersRepository, UsersRepository>();
 builder.Services.AddScoped<IJwtTokensService, JwtTokensService>();
+builder.Services.AddScoped<ICoursesRepository, CoursesRepository>();
+builder.Services.AddScoped<ICoursesService, CoursesService>();
 
 var app = builder.Build();
 

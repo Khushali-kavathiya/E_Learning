@@ -12,12 +12,9 @@ public class UserModelEntityMapper : Profile
     public UserModelEntityMapper()
     {
         // Mapping between RegisterUserModel and ApplicationUser
-        // Maps the Email property of RegisterUserModel to the UserName property of ApplicationUser
+        // Maps the Email property of RegisterUserModel to the UserName property of ApplicationUser.
+        CreateMap<UserModel, ApplicationUser>()
+            .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.Email)).ReverseMap();
 
-        CreateMap<RegisterUserModel, ApplicationUser>()
-            .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.Email));
-
-        // Mapping between ApplicationUser and UserProfileModel    
-        CreateMap<ApplicationUser, UserProfileModel>();   
     }
 }

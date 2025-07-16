@@ -2,7 +2,7 @@ using E_Learning.Domain.Enums;
 
 namespace E_Learning.Services.Models;
 
-public class RegisterUserModel
+public class UserModel
 {
     /// <summary>
     /// Email of the User.

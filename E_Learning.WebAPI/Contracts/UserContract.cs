@@ -1,12 +1,14 @@
 using E_Learning.Domain.Enums;
+using E_Learning.Extensions.Attributes;
 
 namespace E_Learning.WebAPI.Contracts;
 
-public class RegisterUserContract
+public class UserContract
 {
     /// <summary>
     /// Gets or sets the email of the user.
     /// </summary>
+    [CreateOnly]
     public string Email { get; set; }
 
     /// <summary>
@@ -22,5 +24,6 @@ public class RegisterUserContract
     /// <summary>       
     /// Gets or sets the role of the user.
     /// </summary>
+    [CreateOnly]
     public UserRole Role { get; set; }
 }

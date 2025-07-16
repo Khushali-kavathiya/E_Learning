@@ -4,91 +4,239 @@
         <name>E_Learning.WebAPI</name>
     </assembly>
     <members>
-        <member name="P:E_Learning.WebAPI.Contracts.LoginRequest.Email">
+        <member name="T:E_Learning.WebAPI.Contracts.CourseContract">
             <summary>
-            Gets or sets the email of the user attempting to log in.
+            Request DTO for creating a course.
             </summary>
         </member>
-        <member name="P:E_Learning.WebAPI.Contracts.LoginRequest.Password">
+        <member name="P:E_Learning.WebAPI.Contracts.CourseContract.Title">
             <summary>
-            Gets or sets the password of the user attempting to log in.
+            Title of the course.
             </summary>
         </member>
-        <member name="P:E_Learning.WebAPI.Contracts.RegisterUserContract.Email">
+        <member name="P:E_Learning.WebAPI.Contracts.CourseContract.Description">
+            <summary>
+            Description of the course content.
+            </summary>
+        </member>
+        <member name="P:E_Learning.WebAPI.Contracts.CourseContract.Level">
+            <summary>
+            Level of the course(e.g., Beginner, Intermediate, Advanced).
+            </summary>
+        </member>
+        <member name="P:E_Learning.WebAPI.Contracts.CourseContract.Duration">
+            <summary>
+            Duration of the course(e.g., "5 hours").
+            </summary>
+        </member>
+        <member name="P:E_Learning.WebAPI.Contracts.CourseContract.IsFree">
+            <summary>
+            Indicates whether the course is free.
+            </summary>
+        </member>
+        <member name="P:E_Learning.WebAPI.Contracts.CourseContract.Price">
+            <summary>
+            Price of the courses(if not free).
+            </summary>
+        </member>
+        <member name="P:E_Learning.WebAPI.Contracts.CourseContract.CreatedAt">
+            <summary>
+            Date and time when the course was created.
+            </summary>
+        </member>
+        <member name="P:E_Learning.WebAPI.Contracts.UserContract.Email">
             <summary>
             Gets or sets the email of the user.
             </summary>
         </member>
-        <member name="P:E_Learning.WebAPI.Contracts.RegisterUserContract.Password">
+        <member name="P:E_Learning.WebAPI.Contracts.UserContract.Password">
             <summary>
             Gets or sets the password of the user.
             </summary>
         </member>
-        <member name="P:E_Learning.WebAPI.Contracts.RegisterUserContract.FullName">
+        <member name="P:E_Learning.WebAPI.Contracts.UserContract.FullName">
             <summary>
             Gets or sets the full name of the user.
             </summary>
         </member>
-        <member name="P:E_Learning.WebAPI.Contracts.RegisterUserContract.Role">
+        <member name="P:E_Learning.WebAPI.Contracts.UserContract.Role">
             <summary>       
             Gets or sets the role of the user.
             </summary>
         </member>
-        <member name="T:E_Learning.WebAPI.Contracts.UserProfileResponse">
+        <member name="T:E_Learning.WebAPI.Controllers.CoursesController">
             <summary>
-            Represents the response containing user profile information.
+            Controller for managing Coursess.
             </summary>
         </member>
-        <member name="P:E_Learning.WebAPI.Contracts.UserProfileResponse.Id">
+        <member name="M:E_Learning.WebAPI.Controllers.CoursesController.CreateCourses(E_Learning.WebAPI.Contracts.CourseContract)">
             <summary>
-            unique identifier of the user.
+            Create a new Coursess by the logged-in instructor.
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:E_Learning.WebAPI.Controllers.CoursesController.GetAllCourses">
+            <summary>
+            Retrieves all courses from the system.
+            </summary>
+            <returns>
+            An ActionResult containing a list of CourseContract objects.
+            Returns an OK (200) status with the list of courses if successful.
+            </returns>
+        </member>
+        <member name="M:E_Learning.WebAPI.Controllers.CoursesController.GetCoursesById(System.Guid)">
+            <summary>
+            Retrieves a specific course by its unique identifier.
+            </summary>
+            <param name="courserId">The unique identifier (GUID) of the course to retrieve.</param>
+            <returns>
+            An ActionResult containing the CourseContract for the specified course.
+            Returns an OK (200) status with the course data if found, or a NotFound (404) status if the course doesn't exist.
+            </returns>
+        </member>
+        <member name="M:E_Learning.WebAPI.Controllers.CoursesController.PatchCourses(System.Guid,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{E_Learning.WebAPI.Contracts.CourseContract})">
+            <summary>
+            Partially updates a course using JSON Patch.
+            </summary>
+            <param name="courseId">The unique identifier of the course to update.</param>
+            <param name="pathDoc">A JSON Patch document containing the updates to apply to the course.</param>
+            <returns>
+            An IActionResult representing the result of the operation:
+            - 200 OK if the course was successfully updated.
+            - 400 Bad Request if the patch document is null, no valid updatable fields were provided, or some fields cannot be updated.
+            - 404 Not Found if the course with the specified ID does not exist.
+            </returns>
+        </member>
+        <member name="M:E_Learning.WebAPI.Controllers.CoursesController.DeleteCourse(System.Guid)">
+            <summary>
+            Deletes a specific course from the system.
+            </summary>
+            <param name="courseId">The unique identifier (GUID) of the course to be deleted.</param>
+            <returns>
+            An IActionResult representing the result of the delete operation:
+            - 200 OK with a success message if the course was successfully deleted.
+            - 404 Not Found with an error message if the course with the specified ID does not exist.
+            </returns>
+        </member>
+        <member name="T:E_Learning.WebAPI.Controllers.UsersController">
+            <summary>
+            UsersController class handles all user-related operations such as registration, login, profile updates,
+            fetching users, and deletion. It communicates with the UsersService to perform business logic.
             </summary>
         </member>
-        <member name="P:E_Learning.WebAPI.Contracts.UserProfileResponse.Email">
+        <member name="M:E_Learning.WebAPI.Controllers.UsersController.Register(E_Learning.WebAPI.Contracts.UserContract)">
             <summary>
-            email address of the user.
+            Registers a new user with the provided user contract.
+            </summary>
+            <param name="contract">The UserContract object containing the user's registration details.</param>
+            <returns>
+            An IActionResult representing the result of the registration process.
+            Returns a BadRequest with errors if registration fails, or an Ok result with a success message if registration succeeds.
+            </returns>
+        </member>
+        <member name="M:E_Learning.WebAPI.Controllers.UsersController.PatchUser(System.String,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{E_Learning.WebAPI.Contracts.UserContract})">
+            <summary>
+            Partially updates a user using JSON Patch.
+            </summary>
+            <param name="userId">User ID to update.</param>
+            <param name="patchDoc">Patch operations on the user.</param>
+            <returns>Updated user or error.</returns>
+        </member>
+        <member name="M:E_Learning.WebAPI.Controllers.UsersController.GetUserById(System.String)">
+            <summary>
+            Retrieves a user by their unique identifier.
+            </summary>
+            <param name="userId">The unique identifier of the user to retrieve.</param>
+            <returns>
+            An ActionResult representing the result of the user retrieval process.
+            Returns a NotFound result if the user is not found, or an Ok result with the user's details if the user is found.
+            </returns>
+        </member>
+        <member name="M:E_Learning.WebAPI.Controllers.UsersController.GetAllUsers">
+            <summary>
+            Retrieves all users from the system. This endpoint is restricted to Admin roles only.
+            </summary>
+            <returns>
+            An ActionResult containing a list of <see cref="T:E_Learning.WebAPI.Contracts.UserContract"/> objects representing all users,
+            or an error response if retrieval fails.
+            </returns>
+        </member>
+        <member name="M:E_Learning.WebAPI.Controllers.UsersController.DeleteUserById(System.String)">
+            <summary>
+            Deletes a user by their unique identifier. This endpoint is restricted to Admin roles only.
+            </summary>
+            <param name="userId">The unique identifier of the user to delete.</param>
+            <returns>
+            An IActionResult with:
+            - 200 OK and success message if deletion succeeds
+            - 404 Not Found if user doesn't exist
+            - 400 Bad Request with errors if deletion fails
+            </returns>
+        </member>
+        <member name="T:E_Learning.WebAPI.Mapping.CourseContractModelMapper">
+            <summary>
+            AutoMapper profile for mapping between <see cref="T:E_Learning.WebAPI.Contracts.CourseContract"/> and <see cref="T:E_Learning.Services.Models.CourseModel"/>.
+            Handles transformation logic between API-layer DTOs and service-layer models for course-related operations.
             </summary>
         </member>
-        <member name="P:E_Learning.WebAPI.Contracts.UserProfileResponse.FullName">
+        <member name="M:E_Learning.WebAPI.Mapping.CourseContractModelMapper.#ctor">
             <summary>
-            full name of the user.
+            Initializes a new instance of the <see cref="T:E_Learning.WebAPI.Mapping.CourseContractModelMapper"/> class.
+            Configures AutoMapper mappings for course creation and retrieval.
             </summary>
         </member>
-        <member name="P:E_Learning.WebAPI.Contracts.UserProfileResponse.UserName">
+        <member name="T:E_Learning.WebAPI.Mapping.UserContractModelMapperProfile">
             <summary>
-            username of the user.
+            AutoMapper profile for mapping between <see cref="T:E_Learning.WebAPI.Contracts.UserContract"/> and <see cref="T:E_Learning.Services.Models.UserModel"/>.
+            This handles conversion logic between API contracts and internal service models used in authentication and user operations.
             </summary>
         </member>
-        <member name="M:E_Learning.WebAPI.Controllers.AuthController.Register(E_Learning.WebAPI.Contracts.RegisterUserContract)">
+        <member name="M:E_Learning.WebAPI.Mapping.UserContractModelMapperProfile.#ctor">
             <summary>
-            Registers a new user with the provided contract.
-            Maps the contract to a model, creates the user, and adds them to a specified role.
-            </summary>
-            <param name="contract">The contract containing user registration details.</param>
-            <returns>Returns a success message if registration is successful, otherwise returns a bad request with errors.</returns>
-        </member>
-        <member name="M:E_Learning.WebAPI.Controllers.AuthController.Login(E_Learning.WebAPI.Contracts.LoginRequest)">
-            <summary>
-            Logs in a user with the provided contract.
-            Validates the user's email and password, and generates a JWT token if successful.
-            </summary>
-            <param name="contract">The contract containing user login details.</param>
-            <returns>Returns a JWT token if login is successful, otherwise returns an unauthorized response with an error message.</returns>
-        </member>
-        <member name="M:E_Learning.WebAPI.Controllers.AuthController.GetCurrentUserProfile">
-            <summary>
-            Retrieves the current user's profile based on their user ID.
-            </summary>
-            <returns>Returns the user's profile if found, otherwise returns a not found response.</returns>
-        </member>
-        <member name="T:E_Learning.WebAPI.Mapping.AuthContractModelMapperProfile">
-            <summary>
-            AutoMapper profile for mapping between contract and model classes related to authentication.
+            Initializes a new instance of the <see cref="T:E_Learning.WebAPI.Mapping.UserContractModelMapperProfile"/> class.
+            Configures AutoMapper to map between <see cref="T:E_Learning.WebAPI.Contracts.UserContract"/> and <see cref="T:E_Learning.Services.Models.UserModel"/> bidirectionally.
             </summary>
         </member>
         <member name="T:E_Learning.WebAPI.Middlewares.ExceptionMiddleware">
             <summary>
-            Global exception handling.
+            Middleware for globally handling unhandled exceptions in the application.
+            Logs the error and returns a JSON-formatted error response with appropriate status codes.
+            </summary>
+        </member>
+        <member name="M:E_Learning.WebAPI.Middlewares.ExceptionMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.Extensions.Logging.ILogger{E_Learning.WebAPI.Middlewares.ExceptionMiddleware})">
+            <summary>
+            Initializes a new instance of the <see cref="T:E_Learning.WebAPI.Middlewares.ExceptionMiddleware"/> class.
+            </summary>
+            <param name="next">The next middleware in the request pipeline.</param>
+            <param name="logger">Logger for recording exception details.</param>
+        </member>
+        <member name="M:E_Learning.WebAPI.Middlewares.ExceptionMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            Invokes the middleware to catch and handle exceptions that occur during request processing.
+            </summary>
+            <param name="context">The current HTTP context.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.</returns>
+        </member>
+        <member name="T:E_Learning.WebAPI.Validators.CourseContractValidator">
+            <summary>
+            Validator for <see cref="T:E_Learning.WebAPI.Contracts.CourseContract"/> using FluentValidation.
+            Ensures required fields like Title, Description, Level, and Price are properly validated.
+            </summary>
+        </member>
+        <member name="M:E_Learning.WebAPI.Validators.CourseContractValidator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:E_Learning.WebAPI.Validators.CourseContractValidator"/> class.
+            Sets up validation rules for creating or updating a course.
+            </summary>
+        </member>
+        <member name="T:E_Learning.WebAPI.Validators.UserContractValidator">
+            Ensures required fields like Email, Password, and FullName meet validation rules.
+        </member>
+        <member name="M:E_Learning.WebAPI.Validators.UserContractValidator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:E_Learning.WebAPI.Validators.UserContractValidator"/> class.
+            Sets up validation rules for Email, Password, and FullName.
             </summary>
         </member>
     </members>
