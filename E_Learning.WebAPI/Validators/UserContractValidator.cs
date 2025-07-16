@@ -4,12 +4,17 @@ using E_Learning.WebAPI.Contracts;
 namespace E_Learning.WebAPI.Validators;
 
 // <summary>
-// Validator for RegisterUserContract using FluentValidation.
+// Validator for <see cref="UserContract"/> using FluentValidation.
+/// Ensures required fields like Email, Password, and FullName meet validation rules.
 // </summary>
 
-public class RegisterUserContractValidator : AbstractValidator<RegisterUserContract>
+public class UserContractValidator : AbstractValidator<UserContract>
 {
-    public RegisterUserContractValidator()
+    /// <summary>
+    /// Initializes a new instance of the <see cref="UserContractValidator"/> class.
+    /// Sets up validation rules for Email, Password, and FullName.
+    /// </summary>
+    public UserContractValidator()
     {
         RuleFor(x => x.Email)
             .NotEmpty().WithMessage("Email is required.")

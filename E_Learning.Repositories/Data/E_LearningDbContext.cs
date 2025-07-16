@@ -19,4 +19,26 @@ public class E_LearningDbContext : IdentityDbContext<ApplicationUser>
     {
     }
 
+    /// <summary>
+    /// Gets and sets the courses table in the table.
+    /// </summary>
+    public DbSet<Course> Courses { get; set; }
+
+    /// <summary>
+    /// Gets or sets the CourseContents table.
+    /// </summary>
+    public DbSet<CourseContent> CourseContents { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+        base.OnModelCreating(builder);
+
+        // Course -> ApplicationUser (Instructor)
+        builder.Entity<Course>()
+               .HasOne(c => c.Instructor)
+               .WithMany()
+               .HasForeignKey(c => c.InstructorId)
+               .OnDelete(DeleteBehavior.Restrict); // Prevent cascade delete on user deletion.
+
+    }
 }
