@@ -37,7 +37,7 @@ public class CoursesService : ICoursesService
         var result = _mapper.Map<List<CourseModel>>(courses);
         return result;
     }
-    
+
     /// <inheritdoc>
     public async Task<CourseModel> GetCourseByIdAsync(Guid courseId)
     {
@@ -55,8 +55,16 @@ public class CoursesService : ICoursesService
         var course = await _coursesRepository.GetCourseByIdAsync(courseId);
         if (course == null)
             return false;
+        // 🔐 Preserve critical fields before overwriting with mapper
+        var instructorId = course.InstructorId;
 
+        // Map new fields
         _mapper.Map(updatedModel, course);
+
+        // 🔒 Restore preserved values
+        course.InstructorId = instructorId;
+
+
         await _coursesRepository.UpdateAsync(course);
         return true;
     }

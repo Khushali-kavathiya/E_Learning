@@ -1,4 +1,3 @@
-using E_Learning.Domain.Entities;
 using E_Learning.Services.Models;
 
 namespace E_Learning.Services.Interfaces;

@@ -47,21 +47,6 @@ public class CoursesController : ControllerBase
     }
 
     /// <summary>
-    /// Retrieves all courses from the system.
-    /// </summary>
-    /// <returns>
-    /// An ActionResult containing a list of CourseContract objects.
-    /// Returns an OK (200) status with the list of courses if successful.
-    /// </returns>
-    [HttpGet]
-    public async Task<ActionResult> GetAllCourses()
-    {
-        var CoursesService = await _CoursesService.GetCoursesAsync();
-        var response = _mapper.Map<List<CourseContract>>(CoursesService);
-        return Ok(response);
-    }
-
-    /// <summary>
     /// Retrieves a specific course by its unique identifier.
     /// </summary>
     /// <param name="courserId">The unique identifier (GUID) of the course to retrieve.</param>
@@ -76,6 +61,21 @@ public class CoursesController : ControllerBase
         if (course == null)
             return NotFound("Course not found.");
         var response = _mapper.Map<CourseContract>(course);
+        return Ok(response);
+    }
+
+    /// <summary>
+    /// Retrieves all courses from the system.
+    /// </summary>
+    /// <returns>
+    /// An ActionResult containing a list of CourseContract objects.
+    /// Returns an OK (200) status with the list of courses if successful.
+    /// </returns>
+    [HttpGet]
+    public async Task<ActionResult> GetAllCourses()
+    {
+        var CoursesService = await _CoursesService.GetCoursesAsync();
+        var response = _mapper.Map<List<CourseContract>>(CoursesService);
         return Ok(response);
     }
 

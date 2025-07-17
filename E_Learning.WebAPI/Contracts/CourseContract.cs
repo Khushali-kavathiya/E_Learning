@@ -18,12 +18,12 @@ public class CourseContract
     public string Description { get; set; }
 
     /// <summary>
-    /// Level of the course(e.g., Beginner, Intermediate, Advanced).
+    /// Level of the course (e.g., Beginner, Intermediate, Advanced).
     /// </summary>
     public string Level { get; set; }
 
     /// <summary>
-    /// Duration of the course(e.g., "5 hours").
+    /// Duration of the course (e.g., "5 hours").
     /// </summary>
     public string Duration { get; set; }
 
@@ -33,7 +33,7 @@ public class CourseContract
     public bool IsFree { get; set; }
 
     /// <summary>
-    /// Price of the courses(if not free).
+    /// Price of the course (required if not free).
     /// </summary>
     public decimal Price { get; set; }
 
@@ -42,5 +42,4 @@ public class CourseContract
     /// </summary>
     [CreateOnly]
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-
 }

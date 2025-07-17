@@ -18,7 +18,7 @@ using System.Reflection;
 using E_Learning.Extensions.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
-using System.Text.Json.Serialization;
+using E_Learning.Repositories.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -128,6 +128,8 @@ builder.Services.AddScoped<IUsersRepository, UsersRepository>();
 builder.Services.AddScoped<IJwtTokensService, JwtTokensService>();
 builder.Services.AddScoped<ICoursesRepository, CoursesRepository>();
 builder.Services.AddScoped<ICoursesService, CoursesService>();
+builder.Services.AddScoped<ICourseContentsRepository, CourseContentsRepository>();
+builder.Services.AddScoped<ICourseContentsService, CourseContentsService>();
 
 var app = builder.Build();
 

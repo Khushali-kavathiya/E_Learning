@@ -4,6 +4,41 @@
         <name>E_Learning.WebAPI</name>
     </assembly>
     <members>
+        <member name="T:E_Learning.WebAPI.Contracts.CourseContentContract">
+            <summary>
+            Contains information about a course content.
+            </summary>
+        </member>
+        <member name="P:E_Learning.WebAPI.Contracts.CourseContentContract.CourseId">
+            <summary>
+            CourseId of the course this content belongs to.
+            </summary>
+        </member>
+        <member name="P:E_Learning.WebAPI.Contracts.CourseContentContract.Title">
+            <summary>
+            Get or set the title of the content.
+            </summary>
+        </member>
+        <member name="P:E_Learning.WebAPI.Contracts.CourseContentContract.Description">
+            <summary>
+            Get or set the description of the content.
+            </summary>
+        </member>
+        <member name="P:E_Learning.WebAPI.Contracts.CourseContentContract.ContentUrl">
+            <summary>
+            Get or set the content URL.
+            </summary>
+        </member>
+        <member name="P:E_Learning.WebAPI.Contracts.CourseContentContract.ContentType">
+            <summary>
+            Content type of the content(e.g., Video, Article, PDF, Quiz).
+            </summary>
+        </member>
+        <member name="P:E_Learning.WebAPI.Contracts.CourseContentContract.Order">
+            <summary>
+            Get or set the order of the content in the course.
+            </summary>
+        </member>
         <member name="T:E_Learning.WebAPI.Contracts.CourseContract">
             <summary>
             Request DTO for creating a course.
@@ -21,12 +56,12 @@
         </member>
         <member name="P:E_Learning.WebAPI.Contracts.CourseContract.Level">
             <summary>
-            Level of the course(e.g., Beginner, Intermediate, Advanced).
+            Level of the course (e.g., Beginner, Intermediate, Advanced).
             </summary>
         </member>
         <member name="P:E_Learning.WebAPI.Contracts.CourseContract.Duration">
             <summary>
-            Duration of the course(e.g., "5 hours").
+            Duration of the course (e.g., "5 hours").
             </summary>
         </member>
         <member name="P:E_Learning.WebAPI.Contracts.CourseContract.IsFree">
@@ -36,7 +71,7 @@
         </member>
         <member name="P:E_Learning.WebAPI.Contracts.CourseContract.Price">
             <summary>
-            Price of the courses(if not free).
+            Price of the course (required if not free).
             </summary>
         </member>
         <member name="P:E_Learning.WebAPI.Contracts.CourseContract.CreatedAt">
@@ -60,9 +95,78 @@
             </summary>
         </member>
         <member name="P:E_Learning.WebAPI.Contracts.UserContract.Role">
-            <summary>       
+            <summary>
             Gets or sets the role of the user.
             </summary>
+        </member>
+        <member name="T:E_Learning.WebAPI.Controllers.CourseContentsController">
+            <summary>
+            CourseContentsController class handles requests related to course contents.
+            </summary>
+        </member>
+        <member name="M:E_Learning.WebAPI.Controllers.CourseContentsController.#ctor(E_Learning.Services.Interfaces.ICourseContentsService,AutoMapper.IMapper)">
+            <summary>
+            Initializes a new instance of the <see cref="T:E_Learning.WebAPI.Controllers.CourseContentsController"/> class.
+            </summary>
+            <param name="courseContentsService">The service responsible for handling course content operations.</param>
+            <param name="mapper">The AutoMapper instance for object-object mapping.</param>
+        </member>
+        <member name="M:E_Learning.WebAPI.Controllers.CourseContentsController.CreateAsync(E_Learning.WebAPI.Contracts.CourseContentContract)">
+            <summary>
+            Creates a new course content for a specific course.
+            </summary>
+            <param name="contract">The contract containing the course content details to create.</param>
+            <returns>
+            An ActionResult containing the created course content if successful;
+            otherwise, returns a BadRequest result with an error message.
+            </returns>
+        </member>
+        <member name="M:E_Learning.WebAPI.Controllers.CourseContentsController.GetCourseContentByIdAsync(System.Guid)">
+            <summary>
+            Retrieves a specific course content by its unique identifier.
+            </summary>
+            <param name="id">The unique identifier of the course content to retrieve.</param>
+            <returns>
+            An ActionResult containing the course content if found;
+            otherwise, returns a NotFound result with an error message.
+            </returns>
+        </member>
+        <member name="M:E_Learning.WebAPI.Controllers.CourseContentsController.GetCourseContentsByCourseIdAsync(System.Guid)">
+            <summary>
+            Retrieves all course contents associated with a specific course.
+            </summary>
+            <param name="courseId">The unique identifier of the course for which to retrieve contents.</param>
+            <returns>
+            An ActionResult containing a list of course contents if found;
+            otherwise, returns a NotFound result with an error message.
+            </returns>
+        </member>
+        <member name="M:E_Learning.WebAPI.Controllers.CourseContentsController.UpdateCourseContentAsync(System.Guid,E_Learning.WebAPI.Contracts.CourseContentContract)">
+            <summary>
+            Updates a specific course content by its unique identifier.
+            </summary>
+            <param name="id">The unique identifier of the course content to update.</param>
+            <param name="contract">The contract containing the updated course content details.</param>
+            <returns> The updated course content if successful; otherwise, returns a NotFound result with an error message. </returns>
+        </member>
+        <member name="M:E_Learning.WebAPI.Controllers.CourseContentsController.PatchCourseContentAsync(System.Guid,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{E_Learning.WebAPI.Contracts.CourseContentContract})">
+            <summary>
+            Partially updates a course content using JSON Patch.
+            </summary>
+            <param name="id">The unique identifier of the course content to patch.</param>
+            <param name="patchDoc">A JSON Patch document containing the updates to apply to the course content.</param>
+            <returns> The updated course content if successful; otherwise, returns a NotFound result with an error message. </returns>
+        </member>
+        <member name="M:E_Learning.WebAPI.Controllers.CourseContentsController.DeleteAsync(System.Guid)">
+            <summary>
+            Deletes a specific course content by its unique identifier.
+            </summary>
+            <param name="id">The unique identifier of the course content to delete.</param>
+            <returns>
+            An IActionResult representing the result of the delete operation:
+            - If the content is successfully deleted, returns an Ok result with a success message.
+            - If the content is not found, returns a NotFound result with an error message.
+            </returns>
         </member>
         <member name="T:E_Learning.WebAPI.Controllers.CoursesController">
             <summary>
@@ -76,15 +180,6 @@
             <param name="request"></param>
             <returns></returns>
         </member>
-        <member name="M:E_Learning.WebAPI.Controllers.CoursesController.GetAllCourses">
-            <summary>
-            Retrieves all courses from the system.
-            </summary>
-            <returns>
-            An ActionResult containing a list of CourseContract objects.
-            Returns an OK (200) status with the list of courses if successful.
-            </returns>
-        </member>
         <member name="M:E_Learning.WebAPI.Controllers.CoursesController.GetCoursesById(System.Guid)">
             <summary>
             Retrieves a specific course by its unique identifier.
@@ -93,6 +188,15 @@
             <returns>
             An ActionResult containing the CourseContract for the specified course.
             Returns an OK (200) status with the course data if found, or a NotFound (404) status if the course doesn't exist.
+            </returns>
+        </member>
+        <member name="M:E_Learning.WebAPI.Controllers.CoursesController.GetAllCourses">
+            <summary>
+            Retrieves all courses from the system.
+            </summary>
+            <returns>
+            An ActionResult containing a list of CourseContract objects.
+            Returns an OK (200) status with the list of courses if successful.
             </returns>
         </member>
         <member name="M:E_Learning.WebAPI.Controllers.CoursesController.PatchCourses(System.Guid,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{E_Learning.WebAPI.Contracts.CourseContract})">
@@ -135,13 +239,15 @@
             Returns a BadRequest with errors if registration fails, or an Ok result with a success message if registration succeeds.
             </returns>
         </member>
-        <member name="M:E_Learning.WebAPI.Controllers.UsersController.PatchUser(System.String,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{E_Learning.WebAPI.Contracts.UserContract})">
+        <member name="M:E_Learning.WebAPI.Controllers.UsersController.Login(E_Learning.WebAPI.Contracts.UserContract)">
             <summary>
-            Partially updates a user using JSON Patch.
+            Authenticates the user and returns a JWT token if credentials are valid.
             </summary>
-            <param name="userId">User ID to update.</param>
-            <param name="patchDoc">Patch operations on the user.</param>
-            <returns>Updated user or error.</returns>
+            <param name="contract">The login request containing email and password.</param>
+            <returns>
+            Returns a 200 OK with a JWT token if login is successful;  
+            otherwise, returns 401 Unauthorized with an error message.
+            </returns>
         </member>
         <member name="M:E_Learning.WebAPI.Controllers.UsersController.GetUserById(System.String)">
             <summary>
@@ -161,6 +267,14 @@
             An ActionResult containing a list of <see cref="T:E_Learning.WebAPI.Contracts.UserContract"/> objects representing all users,
             or an error response if retrieval fails.
             </returns>
+        </member>
+        <member name="M:E_Learning.WebAPI.Controllers.UsersController.PatchUser(System.String,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{E_Learning.WebAPI.Contracts.UserContract})">
+            <summary>
+            Partially updates a user using JSON Patch.
+            </summary>
+            <param name="userId">User ID to update.</param>
+            <param name="patchDoc">Patch operations on the user.</param>
+            <returns>Updated user or error.</returns>
         </member>
         <member name="M:E_Learning.WebAPI.Controllers.UsersController.DeleteUserById(System.String)">
             <summary>
@@ -217,6 +331,11 @@
             </summary>
             <param name="context">The current HTTP context.</param>
             <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.</returns>
+        </member>
+        <member name="T:E_Learning.WebAPI.Validators.CourseContentValidator">
+            <summary>
+            Validator for <see cref="T:E_Learning.WebAPI.Contracts.CourseContentContract"/> using FluentValidation.
+            </summary>
         </member>
         <member name="T:E_Learning.WebAPI.Validators.CourseContractValidator">
             <summary>

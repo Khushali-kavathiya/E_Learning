@@ -3,9 +3,7 @@ using E_Learning.Services.Interface;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 using E_Learning.Services.Models;
-using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.AspNetCore.JsonPatch;
 using E_Learning.Extensions.Helpers;
 
@@ -73,44 +71,6 @@ public class UsersController : ControllerBase
     }
 
     /// <summary>
-    /// Partially updates a user using JSON Patch.
-    /// </summary>
-    /// <param name="userId">User ID to update.</param>
-    /// <param name="patchDoc">Patch operations on the user.</param>
-    /// <returns>Updated user or error.</returns>
-    [HttpPatch("{userId}")]
-    [Authorize]
-    public async Task<IActionResult> PatchUser(string userId, [FromBody] JsonPatchDocument<UserContract> patchDoc)
-    {
-        if (patchDoc == null)
-            return BadRequest("Patch document is required.");
-
-        //Get list of removed operations(for validation)
-        var originalOpCount = patchDoc.Operations.Count;
-        PatchFilter.RemoveCreateOnlyFields(patchDoc);
-        if (patchDoc.Operations.Count == 0)
-            return BadRequest("No updatable fields provided or all were restricted by CreateOnly attribute.");
-        if (patchDoc.Operations.Count < originalOpCount)
-            return BadRequest("Payload contains fields that cannot be update (e.g., Email or Role) Please remove them.");
-
-        var user = await _usersService.GetUserByIdAsync(userId);
-        if (user == null)
-            return NotFound("User not found.");
-
-        var contract = _mapper.Map<UserContract>(user);
-        patchDoc.ApplyTo(contract, ModelState);
-
-        if (!ModelState.IsValid)
-            return BadRequest(ModelState);
-
-        var updatedModel = _mapper.Map<UserModel>(contract);
-        var result = await _usersService.PatchUserAsync(userId, updatedModel);
-
-        return result.Succeeded ? Ok("User updated successfully.") : BadRequest(result.Errors);
-    }
-
-
-    /// <summary>
     /// Retrieves a user by their unique identifier.
     /// </summary>
     /// <param name="userId">The unique identifier of the user to retrieve.</param>
@@ -145,6 +105,43 @@ public class UsersController : ControllerBase
         var users = await _usersService.GetAllUsersAsync();
         var response = _mapper.Map<List<UserContract>>(users);
         return Ok(response);
+    }
+
+    /// <summary>
+    /// Partially updates a user using JSON Patch.
+    /// </summary>
+    /// <param name="userId">User ID to update.</param>
+    /// <param name="patchDoc">Patch operations on the user.</param>
+    /// <returns>Updated user or error.</returns>
+    [HttpPatch("{userId}")]
+    [Authorize]
+    public async Task<IActionResult> PatchUser(string userId, [FromBody] JsonPatchDocument<UserContract> patchDoc)
+    {
+        if (patchDoc == null)
+            return BadRequest("Patch document is required.");
+
+        //Get list of removed operations(for validation)
+        var originalOpCount = patchDoc.Operations.Count;
+        PatchFilter.RemoveCreateOnlyFields(patchDoc);
+        if (patchDoc.Operations.Count == 0)
+            return BadRequest("No updatable fields provided or all were restricted by CreateOnly attribute.");
+        if (patchDoc.Operations.Count < originalOpCount)
+            return BadRequest("Payload contains fields that cannot be update (e.g., Email or Role) Please remove them.");
+
+        var user = await _usersService.GetUserByIdAsync(userId);
+        if (user == null)
+            return NotFound("User not found.");
+
+        var contract = _mapper.Map<UserContract>(user);
+        patchDoc.ApplyTo(contract, ModelState);
+
+        if (!ModelState.IsValid)
+            return BadRequest(ModelState);
+
+        var updatedModel = _mapper.Map<UserModel>(contract);
+        var result = await _usersService.PatchUserAsync(userId, updatedModel);
+
+        return result.Succeeded ? Ok("User updated successfully.") : BadRequest(result.Errors);
     }
 
     /// <summary>
