@@ -9,17 +9,8 @@ namespace E_Learning.Services.Implementations
     /// <summary>
     /// courseContentsService class implements ICourseContentsService interface for course content-related operations.
     /// </summary>
-    public class CourseContentsService : ICourseContentsService
+    public class CourseContentsService(ICourseContentsRepository _courseContentsRepository, IMapper _mapper) : ICourseContentsService
     {
-        private readonly ICourseContentsRepository _courseContentsRepository;
-        private readonly IMapper _mapper;
-
-        public CourseContentsService(ICourseContentsRepository courseContentsRepository, IMapper mapper)
-        {
-            _courseContentsRepository = courseContentsRepository;
-            _mapper = mapper;
-        }
-
         /// <inheritdoc>
         public async Task<CourseContentModel> CreateAsync(CourseContentModel model)
         {

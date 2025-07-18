@@ -17,17 +17,8 @@ namespace E_Learning.WebAPI.Controllers;
 [ApiVersion("1.0")]
 [Route("[controller]")]
 
-public class UsersController : ControllerBase
+public class UsersController(IUsersService _usersService, IMapper _mapper) : ControllerBase
 {
-    private readonly IUsersService _usersService;
-    private readonly IMapper _mapper;
-
-    public UsersController(IUsersService usersService, IMapper mapper)
-    {
-        _usersService = usersService;
-        _mapper = mapper;
-    }
-
     /// <summary>
     /// Registers a new user with the provided user contract.
     /// </summary>
@@ -37,6 +28,7 @@ public class UsersController : ControllerBase
     /// Returns a BadRequest with errors if registration fails, or an Ok result with a success message if registration succeeds.
     /// </returns>
     [HttpPost("register")]
+    [Authorize]
     public async Task<IActionResult> Register([FromBody] UserContract contract)
     {
         var model = _mapper.Map<UserModel>(contract);

@@ -6,15 +6,9 @@ using Microsoft.EntityFrameworkCore;
 namespace E_Learning.Repositories.Implementations;
 
 /// <inheritdoc />
-public class CoursesRepository : ICoursesRepository
+public class CoursesRepository(E_LearningDbContext _context) : ICoursesRepository
 {
-    private readonly E_LearningDbContext _context;
-
-    public CoursesRepository(E_LearningDbContext context)
-    {
-        _context = context;
-    }
-
+    
     /// <inheritdoc />
     public async Task AddAsync(Course course)
     {

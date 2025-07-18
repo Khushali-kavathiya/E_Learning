@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace E_Learning.Extensions.Http;
 
+/// <summary>
+/// Globally applies a route prefix to all controllers.
+/// </summary>
 public class GlobalRoutePrefixConvention : IApplicationModelConvention
 {
     private readonly AttributeRouteModel _routePrefix;

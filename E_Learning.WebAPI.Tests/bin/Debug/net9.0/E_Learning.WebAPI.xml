@@ -79,6 +79,41 @@
             Date and time when the course was created.
             </summary>
         </member>
+        <member name="P:E_Learning.WebAPI.Contracts.EnrollmentContract.UserId">
+            <summary>
+            Id of the enrolled user.
+            </summary>
+        </member>
+        <member name="P:E_Learning.WebAPI.Contracts.EnrollmentContract.CourseId">
+            <summary>
+            Id of the course the user is enrolled in.
+            </summary>
+        </member>
+        <member name="P:E_Learning.WebAPI.Contracts.EnrollmentContract.EnrolledAt">
+            <summary>
+            The date and time the user enrolled in the course.
+            </summary>
+        </member>
+        <member name="P:E_Learning.WebAPI.Contracts.EnrollmentContract.IsCompleted">
+            <summary>
+            Whether the user has completed the course or not.
+            </summary>
+        </member>
+        <member name="P:E_Learning.WebAPI.Contracts.EnrollmentContract.Progress">
+            <summary>
+            The percentage of course progress (0 to 100).
+            </summary>
+        </member>
+        <member name="P:E_Learning.WebAPI.Contracts.EnrollmentContract.CompletedAt">
+            <summary>
+            The date and time the user completed the course.
+            </summary>
+        </member>
+        <member name="P:E_Learning.WebAPI.Contracts.EnrollmentContract.CertificateUrl">
+            <summary>
+            The URL of the certificate the user obtained.
+            </summary>
+        </member>
         <member name="P:E_Learning.WebAPI.Contracts.UserContract.Email">
             <summary>
             Gets or sets the email of the user.
@@ -106,10 +141,8 @@
         </member>
         <member name="M:E_Learning.WebAPI.Controllers.CourseContentsController.#ctor(E_Learning.Services.Interfaces.ICourseContentsService,AutoMapper.IMapper)">
             <summary>
-            Initializes a new instance of the <see cref="T:E_Learning.WebAPI.Controllers.CourseContentsController"/> class.
+            CourseContentsController class handles requests related to course contents.
             </summary>
-            <param name="courseContentsService">The service responsible for handling course content operations.</param>
-            <param name="mapper">The AutoMapper instance for object-object mapping.</param>
         </member>
         <member name="M:E_Learning.WebAPI.Controllers.CourseContentsController.CreateAsync(E_Learning.WebAPI.Contracts.CourseContentContract)">
             <summary>
@@ -173,12 +206,17 @@
             Controller for managing Coursess.
             </summary>
         </member>
+        <member name="M:E_Learning.WebAPI.Controllers.CoursesController.#ctor(E_Learning.Services.Interfaces.ICoursesService,AutoMapper.IMapper)">
+            <summary>
+            Controller for managing Coursess.
+            </summary>
+        </member>
         <member name="M:E_Learning.WebAPI.Controllers.CoursesController.CreateCourses(E_Learning.WebAPI.Contracts.CourseContract)">
             <summary>
             Create a new Coursess by the logged-in instructor.
             </summary>
-            <param name="request"></param>
-            <returns></returns>
+            <param name="request">The CourseContract object containing the course details.</param>
+            <returns>Returns an IActionResult representing the result of the course creation process.</returns>
         </member>
         <member name="M:E_Learning.WebAPI.Controllers.CoursesController.GetCoursesById(System.Guid)">
             <summary>
@@ -223,7 +261,67 @@
             - 404 Not Found with an error message if the course with the specified ID does not exist.
             </returns>
         </member>
+        <member name="T:E_Learning.WebAPI.Controllers.EnrollmentsController">
+            <summary>
+            Controller for managing Enrollments.
+            </summary>
+        </member>
+        <member name="M:E_Learning.WebAPI.Controllers.EnrollmentsController.#ctor(E_Learning.Services.Interfaces.IEnrollmentsService,AutoMapper.IMapper)">
+            <summary>
+            Controller for managing Enrollments.
+            </summary>
+        </member>
+        <member name="M:E_Learning.WebAPI.Controllers.EnrollmentsController.CreateAsync(E_Learning.WebAPI.Contracts.EnrollmentContract)">
+            <summary>
+            Enrolls a user in a course.
+            </summary>
+            <param name="contract">The contract containing the user and course details for enrollment.</param>
+            <returns>The created enrollment if successful; otherwise, returns a BadRequest result with an error message.</returns>
+        </member>
+        <member name="M:E_Learning.WebAPI.Controllers.EnrollmentsController.GetByIdAsync(System.Guid)">
+            <summary>
+            Gets an enrollment by its unique identifier.
+            </summary>
+            <param name="id">The unique identifier of the enrollment to retrieve.</param>
+            <returns>The enrollment if found; otherwise, returns a NotFound result with an error message.</returns>
+        </member>
+        <member name="M:E_Learning.WebAPI.Controllers.EnrollmentsController.GetByUserIdAsync(System.String)">
+            <summary>
+            Gets all enrollments for a specific user.
+            </summary>
+            <param name="userId">The unique identifier of the user.</param>
+            <returns>A collection of enrollment models.</returns>
+        </member>
+        <member name="M:E_Learning.WebAPI.Controllers.EnrollmentsController.UpdateAsync(System.Guid,E_Learning.WebAPI.Contracts.EnrollmentContract)">
+            <summary>
+            Updates an existing enrollment.
+            </summary>
+            <param name="id">The unique identifier of the enrollment to update.</param>
+            <param name="contract">The updated enrollment contract.</param>
+            <returns>Returns the updated enrollment if successful; otherwise, returns a NotFound result with an error message.</returns>
+        </member>
+        <member name="M:E_Learning.WebAPI.Controllers.EnrollmentsController.PatchAsync(System.Guid,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{E_Learning.WebAPI.Contracts.EnrollmentContract})">
+            <summary>
+            Partially updates an existing enrollment.
+            </summary>
+            <param name="id">The unique identifier of the enrollment to update.</param>
+            <param name="patchDoc">The JSON patch document containing the updated properties.</param>
+            <returns>Returns the updated enrollment if successful; otherwise, returns a NotFound result with an error message.</returns>
+        </member>
+        <member name="M:E_Learning.WebAPI.Controllers.EnrollmentsController.DeleteAsync(System.Guid)">
+            <summary>
+            Deletes an enrollment by its unique identifier.
+            </summary>
+            <param name="id">The unique identifier of the enrollment to delete.</param>
+            <returns>returns a NotFound result if the enrollment is not found; otherwise, returns an Ok result with a success message.</returns>
+        </member>
         <member name="T:E_Learning.WebAPI.Controllers.UsersController">
+            <summary>
+            UsersController class handles all user-related operations such as registration, login, profile updates,
+            fetching users, and deletion. It communicates with the UsersService to perform business logic.
+            </summary>
+        </member>
+        <member name="M:E_Learning.WebAPI.Controllers.UsersController.#ctor(E_Learning.Services.Interface.IUsersService,AutoMapper.IMapper)">
             <summary>
             UsersController class handles all user-related operations such as registration, login, profile updates,
             fetching users, and deletion. It communicates with the UsersService to perform business logic.
@@ -288,6 +386,14 @@
             - 400 Bad Request with errors if deletion fails
             </returns>
         </member>
+        <member name="T:E_Learning.WebAPI.Mapping.CourseContentContractModelMapper">
+            <summary>
+            AutoMapper profile for mapping between course content contract and model.
+            </summary>
+        </member>
+        <member name="M:E_Learning.WebAPI.Mapping.CourseContentContractModelMapper.#ctor">
+            Initializes a new instance of the <see cref="T:E_Learning.WebAPI.Mapping.CourseContentContractModelMapper"/> class.
+        </member>
         <member name="T:E_Learning.WebAPI.Mapping.CourseContractModelMapper">
             <summary>
             AutoMapper profile for mapping between <see cref="T:E_Learning.WebAPI.Contracts.CourseContract"/> and <see cref="T:E_Learning.Services.Models.CourseModel"/>.
@@ -299,6 +405,14 @@
             Initializes a new instance of the <see cref="T:E_Learning.WebAPI.Mapping.CourseContractModelMapper"/> class.
             Configures AutoMapper mappings for course creation and retrieval.
             </summary>
+        </member>
+        <member name="T:E_Learning.WebAPI.Mapping.EnrollmentContractModelMapper">
+            <summary>
+            AutoMapper profile for mapping between enrollment contract and model.
+            </summary>
+        </member>
+        <member name="M:E_Learning.WebAPI.Mapping.EnrollmentContractModelMapper.#ctor">
+            Initializes a new instance of the <see cref="T:E_Learning.WebAPI.Mapping.EnrollmentContractModelMapper"/> class.
         </member>
         <member name="T:E_Learning.WebAPI.Mapping.UserContractModelMapperProfile">
             <summary>
@@ -336,6 +450,9 @@
             <summary>
             Validator for <see cref="T:E_Learning.WebAPI.Contracts.CourseContentContract"/> using FluentValidation.
             </summary>
+        </member>
+        <member name="M:E_Learning.WebAPI.Validators.CourseContentValidator.#ctor">
+            Initializes a new instance of the <see cref="T:E_Learning.WebAPI.Validators.CourseContentValidator"/> class.
         </member>
         <member name="T:E_Learning.WebAPI.Validators.CourseContractValidator">
             <summary>

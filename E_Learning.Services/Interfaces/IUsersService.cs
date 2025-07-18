@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Identity;
 using E_Learning.Services.Models;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace E_Learning.Services.Interface;
 

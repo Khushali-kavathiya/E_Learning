@@ -1,6 +1,5 @@
 using E_Learning.Domain.Enums;
 using E_Learning.Extensions.Attributes;
-using System.ComponentModel.DataAnnotations;
 
 namespace E_Learning.WebAPI.Contracts;
 

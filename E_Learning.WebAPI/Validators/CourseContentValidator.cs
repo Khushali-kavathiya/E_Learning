@@ -8,6 +8,7 @@ namespace E_Learning.WebAPI.Validators
     /// </summary>
     public class CourseContentValidator : AbstractValidator<CourseContentContract>
     {
+        /// Initializes a new instance of the <see cref="CourseContentValidator"/> class.
         public CourseContentValidator()
         {
             RuleFor(x => x.CourseId)

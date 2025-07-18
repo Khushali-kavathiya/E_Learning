@@ -6,13 +6,8 @@ using E_Learning.Domain.Entities;
 namespace E_Learning.Repositories.Implementations
 {
     /// <inheritdoc />
-    public class CourseContentsRepository : ICourseContentsRepository
+    public class CourseContentsRepository(E_LearningDbContext _context) : ICourseContentsRepository
     {
-        private readonly E_LearningDbContext _context;
-        public CourseContentsRepository(E_LearningDbContext context)
-        {
-            _context = context;
-        }
 
         /// <inheritdoc />
         public async Task AddAsync(CourseContent content)

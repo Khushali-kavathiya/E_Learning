@@ -16,22 +16,9 @@ namespace E_Learning.WebAPI.Controllers
     [ApiController]
     [ApiVersion("1.0")]
     [Route("[controller]")]
-    public class CourseContentsController : ControllerBase
+    public class CourseContentsController(ICourseContentsService _courseContentsService, IMapper _mapper) : ControllerBase
     {
-        private readonly ICourseContentsService _courseContentsService;
-        private readonly IMapper _mapper;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CourseContentsController"/> class.
-        /// </summary>
-        /// <param name="courseContentsService">The service responsible for handling course content operations.</param>
-        /// <param name="mapper">The AutoMapper instance for object-object mapping.</param>
-        public CourseContentsController(ICourseContentsService courseContentsService, IMapper mapper)
-        {
-            _courseContentsService = courseContentsService;
-            _mapper = mapper;
-        }
-
+        
         /// <summary>
         /// Creates a new course content for a specific course.
         /// </summary>

@@ -6,17 +6,8 @@ using E_Learning.Services.Models;
 
 namespace E_Learning.Services.Implementations;
 
-public class CoursesService : ICoursesService
+public class CoursesService(ICoursesRepository _coursesRepository, IMapper _mapper) : ICoursesService
 {
-    private readonly ICoursesRepository _coursesRepository;
-    private readonly IMapper _mapper;
-
-    public CoursesService(ICoursesRepository coursesRepository, IMapper mapper)
-    {
-        _coursesRepository = coursesRepository;
-        _mapper = mapper;
-    }
-
     /// <inheritdoc>
     public async Task CreateCourseAsync(CourseModel model)
     {

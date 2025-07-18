@@ -29,6 +29,11 @@ public class E_LearningDbContext : IdentityDbContext<ApplicationUser>
     /// </summary>
     public DbSet<CourseContent> CourseContents { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Enrollments table.
+    /// </summary>
+    public DbSet<Enrollment> Enrollments { get; set; }
+
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
