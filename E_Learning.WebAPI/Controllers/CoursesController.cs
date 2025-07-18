@@ -19,22 +19,13 @@ namespace E_Learning.WebAPI.Controllers;
 [Route("[controller]")]
 [Authorize(Roles = "Instructor, Admin")]
 
-public class CoursesController : ControllerBase
+public class CoursesController(ICoursesService _coursesService, IMapper _mapper) : ControllerBase
 {
-    private readonly ICoursesService _CoursesService;
-    private readonly IMapper _mapper;
-
-    public CoursesController(ICoursesService CoursesService, IMapper mapper)
-    {
-        _CoursesService = CoursesService;
-        _mapper = mapper;
-    }
-
     /// <summary>
     /// Create a new Coursess by the logged-in instructor.
     /// </summary>
-    /// <param name="request"></param>
-    /// <returns></returns>
+    /// <param name="request">The CourseContract object containing the course details.</param>
+    /// <returns>Returns an IActionResult representing the result of the course creation process.</returns>
 
     [HttpPost]
     public async Task<IActionResult> CreateCourses([FromBody] CourseContract request)
@@ -42,23 +33,8 @@ public class CoursesController : ControllerBase
         var model = _mapper.Map<CourseModel>(request);
         model.InstructorId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-        await _CoursesService.CreateCourseAsync(model);
+        await _coursesService.CreateCourseAsync(model);
         return Ok("Course created successfully.");
-    }
-
-    /// <summary>
-    /// Retrieves all courses from the system.
-    /// </summary>
-    /// <returns>
-    /// An ActionResult containing a list of CourseContract objects.
-    /// Returns an OK (200) status with the list of courses if successful.
-    /// </returns>
-    [HttpGet]
-    public async Task<ActionResult> GetAllCourses()
-    {
-        var CoursesService = await _CoursesService.GetCoursesAsync();
-        var response = _mapper.Map<List<CourseContract>>(CoursesService);
-        return Ok(response);
     }
 
     /// <summary>
@@ -72,10 +48,25 @@ public class CoursesController : ControllerBase
     [HttpGet("{courserId}")]
     public async Task<ActionResult> GetCoursesById(Guid courserId)
     {
-        var course = await _CoursesService.GetCourseByIdAsync(courserId);
+        var course = await _coursesService.GetCourseByIdAsync(courserId);
         if (course == null)
             return NotFound("Course not found.");
         var response = _mapper.Map<CourseContract>(course);
+        return Ok(response);
+    }
+
+    /// <summary>
+    /// Retrieves all courses from the system.
+    /// </summary>
+    /// <returns>
+    /// An ActionResult containing a list of CourseContract objects.
+    /// Returns an OK (200) status with the list of courses if successful.
+    /// </returns>
+    [HttpGet]
+    public async Task<ActionResult> GetAllCourses()
+    {
+        var CoursesService = await _coursesService.GetCoursesAsync();
+        var response = _mapper.Map<List<CourseContract>>(CoursesService);
         return Ok(response);
     }
 
@@ -91,32 +82,32 @@ public class CoursesController : ControllerBase
     /// - 404 Not Found if the course with the specified ID does not exist.
     /// </returns>
     [HttpPatch("{courseId}")]
-    public async Task<IActionResult> PatchCourses(Guid courseId, [FromBody] JsonPatchDocument<CourseContract> pathDoc)
+    public async Task<IActionResult> PatchCourses(Guid courseId, [FromBody] JsonPatchDocument<CourseContract> patchDoc)
     {
-        if (pathDoc == null)
+        if (patchDoc == null)
             return BadRequest();
 
-        var existing = await _CoursesService.GetCourseByIdAsync(courseId);
+        var existing = await _coursesService.GetCourseByIdAsync(courseId);
         if (existing == null)
             return NotFound();
 
         var contract = _mapper.Map<CourseContract>(existing);
-        var originalOpCount = pathDoc.Operations.Count;
+        var originalOpCount = patchDoc.Operations.Count;
 
         // Remove operations that attempt to modify [CreateOnly] fields
-        PatchFilter.RemoveCreateOnlyFields(pathDoc);
-        if (pathDoc.Operations.Count == 0)
+        PatchFilter.RemoveCreateOnlyFields(patchDoc);
+        if (patchDoc.Operations.Count == 0)
             return BadRequest("No valid updatable fields were provided. Fields like InstructorId or CreatedAt are restricted and cannot be modified.");
-        if (pathDoc.Operations.Count < originalOpCount)
+        if (patchDoc.Operations.Count < originalOpCount)
             return BadRequest("Some fields in your request (e.g., InstructorId, CreatedAt) cannot be updated and were ignored. Please remove them from your patch payload.");
 
-        pathDoc.ApplyTo(contract, ModelState);
+        patchDoc.ApplyTo(contract, ModelState);
 
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
 
         var updatedModel = _mapper.Map<CourseModel>(contract);
-        var updated = await _CoursesService.UpdateCourseAsync(courseId, updatedModel);
+        var updated = await _coursesService.UpdateCourseAsync(courseId, updatedModel);
         return updated ? Ok("Course updated successfully") : BadRequest("Update failed.");
     }
 
@@ -133,7 +124,7 @@ public class CoursesController : ControllerBase
     [HttpDelete("{courseId}")]
     public async Task<IActionResult> DeleteCourse (Guid courseId)
     {
-        var deleted = await _CoursesService.DeleteCourseAsync(courseId);
+        var deleted = await _coursesService.DeleteCourseAsync(courseId);
 
         if (!deleted)
             return NotFound("Course not found.");

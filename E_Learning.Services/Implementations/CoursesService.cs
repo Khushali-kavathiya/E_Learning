@@ -6,17 +6,8 @@ using E_Learning.Services.Models;
 
 namespace E_Learning.Services.Implementations;
 
-public class CoursesService : ICoursesService
+public class CoursesService(ICoursesRepository _coursesRepository, IMapper _mapper) : ICoursesService
 {
-    private readonly ICoursesRepository _coursesRepository;
-    private readonly IMapper _mapper;
-
-    public CoursesService(ICoursesRepository coursesRepository, IMapper mapper)
-    {
-        _coursesRepository = coursesRepository;
-        _mapper = mapper;
-    }
-
     /// <inheritdoc>
     public async Task CreateCourseAsync(CourseModel model)
     {
@@ -37,7 +28,7 @@ public class CoursesService : ICoursesService
         var result = _mapper.Map<List<CourseModel>>(courses);
         return result;
     }
-    
+
     /// <inheritdoc>
     public async Task<CourseModel> GetCourseByIdAsync(Guid courseId)
     {
@@ -55,8 +46,16 @@ public class CoursesService : ICoursesService
         var course = await _coursesRepository.GetCourseByIdAsync(courseId);
         if (course == null)
             return false;
+        // 🔐 Preserve critical fields before overwriting with mapper
+        var instructorId = course.InstructorId;
 
+        // Map new fields
         _mapper.Map(updatedModel, course);
+
+        // 🔒 Restore preserved values
+        course.InstructorId = instructorId;
+
+
         await _coursesRepository.UpdateAsync(course);
         return true;
     }

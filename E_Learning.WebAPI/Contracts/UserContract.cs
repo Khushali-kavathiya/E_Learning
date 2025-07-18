@@ -21,7 +21,7 @@ public class UserContract
     /// </summary>
     public string FullName { get; set; }
 
-    /// <summary>       
+    /// <summary>
     /// Gets or sets the role of the user.
     /// </summary>
     [CreateOnly]

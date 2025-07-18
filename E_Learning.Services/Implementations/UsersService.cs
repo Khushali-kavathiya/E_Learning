@@ -2,7 +2,6 @@ using E_Learning.Services.Interface;
 using Microsoft.AspNetCore.Identity;
 using E_Learning.Services.Models;
 using E_Learning.Repositories.Interface;
-using E_Learning.Services.Mapping;
 using E_Learning.Services.Interfaces;
 using E_Learning.Domain.Entities;
 using AutoMapper;
@@ -14,19 +13,8 @@ namespace E_Learning.Services.Implementations;
 /// userService class implements IuserService interface for user authentication and registration.
 /// It provides methods for user registration and login.
 /// </summary>
-public class UsersService : IUsersService
+public class UsersService(IUsersRepository _usersRepository, IJwtTokensService _jwtTokensService, IMapper _mapper) : IUsersService
 {
-    private readonly IUsersRepository _usersRepository;
-    private readonly IJwtTokensService _jwtTokensService;
-    private readonly IMapper _mapper;
-
-    public UsersService(IUsersRepository usersRepository, IJwtTokensService jwtTokensService, IMapper mapper)
-    {
-         _usersRepository = usersRepository;
-        _jwtTokensService = jwtTokensService;
-        _mapper = mapper;
-    }
-
     /// <summary>
     /// Registers a new user with the provided model.
     /// Maps the model to an entity, creates the user, and adds them to a specified role.

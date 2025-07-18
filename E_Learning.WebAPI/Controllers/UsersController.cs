@@ -3,9 +3,7 @@ using E_Learning.Services.Interface;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 using E_Learning.Services.Models;
-using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.AspNetCore.JsonPatch;
 using E_Learning.Extensions.Helpers;
 
@@ -19,17 +17,8 @@ namespace E_Learning.WebAPI.Controllers;
 [ApiVersion("1.0")]
 [Route("[controller]")]
 
-public class UsersController : ControllerBase
+public class UsersController(IUsersService _usersService, IMapper _mapper) : ControllerBase
 {
-    private readonly IUsersService _usersService;
-    private readonly IMapper _mapper;
-
-    public UsersController(IUsersService usersService, IMapper mapper)
-    {
-        _usersService = usersService;
-        _mapper = mapper;
-    }
-
     /// <summary>
     /// Registers a new user with the provided user contract.
     /// </summary>
@@ -39,6 +28,7 @@ public class UsersController : ControllerBase
     /// Returns a BadRequest with errors if registration fails, or an Ok result with a success message if registration succeeds.
     /// </returns>
     [HttpPost("register")]
+    [Authorize]
     public async Task<IActionResult> Register([FromBody] UserContract contract)
     {
         var model = _mapper.Map<UserModel>(contract);
@@ -70,6 +60,43 @@ public class UsersController : ControllerBase
             return Unauthorized("Invalid credentials");
 
         return Ok(new { token });
+    }
+
+    /// <summary>
+    /// Retrieves a user by their unique identifier.
+    /// </summary>
+    /// <param name="userId">The unique identifier of the user to retrieve.</param>
+    /// <returns>
+    /// An ActionResult representing the result of the user retrieval process.
+    /// Returns a NotFound result if the user is not found, or an Ok result with the user's details if the user is found.
+    /// </returns>
+    [HttpGet("{userId}")]
+    [Authorize]
+    public async Task<ActionResult> GetUserById(string userId)
+    {
+        var user = await _usersService.GetUserByIdAsync(userId);
+        if (user == null)
+            return NotFound("User not found.");
+
+        var response = _mapper.Map<UserContract>(user);
+        return Ok(response);
+    }
+
+
+    /// <summary>
+    /// Retrieves all users from the system. This endpoint is restricted to Admin roles only.
+    /// </summary>
+    /// <returns>
+    /// An ActionResult containing a list of <see cref="UserContract"/> objects representing all users,
+    /// or an error response if retrieval fails.
+    /// </returns>
+    [HttpGet]
+    [Authorize(Roles = "Admin")]
+    public async Task<ActionResult> GetAllUsers()
+    {
+        var users = await _usersService.GetAllUsersAsync();
+        var response = _mapper.Map<List<UserContract>>(users);
+        return Ok(response);
     }
 
     /// <summary>
@@ -107,44 +134,6 @@ public class UsersController : ControllerBase
         var result = await _usersService.PatchUserAsync(userId, updatedModel);
 
         return result.Succeeded ? Ok("User updated successfully.") : BadRequest(result.Errors);
-    }
-
-
-    /// <summary>
-    /// Retrieves a user by their unique identifier.
-    /// </summary>
-    /// <param name="userId">The unique identifier of the user to retrieve.</param>
-    /// <returns>
-    /// An ActionResult representing the result of the user retrieval process.
-    /// Returns a NotFound result if the user is not found, or an Ok result with the user's details if the user is found.
-    /// </returns>
-    [HttpGet("{userId}")]
-    [Authorize]
-    public async Task<ActionResult> GetUserById(string userId)
-    {
-        var user = await _usersService.GetUserByIdAsync(userId);
-        if (user == null)
-            return NotFound("User not found.");
-
-        var response = _mapper.Map<UserContract>(user);
-        return Ok(response);
-    }
-
-
-    /// <summary>
-    /// Retrieves all users from the system. This endpoint is restricted to Admin roles only.
-    /// </summary>
-    /// <returns>
-    /// An ActionResult containing a list of <see cref="UserContract"/> objects representing all users,
-    /// or an error response if retrieval fails.
-    /// </returns>
-    [HttpGet]
-    [Authorize(Roles = "Admin")]
-    public async Task<ActionResult> GetAllUsers()
-    {
-        var users = await _usersService.GetAllUsersAsync();
-        var response = _mapper.Map<List<UserContract>>(users);
-        return Ok(response);
     }
 
     /// <summary>

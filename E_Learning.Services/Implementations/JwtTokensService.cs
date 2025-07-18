@@ -3,22 +3,12 @@ using System.Security.Claims;
 using System.Text;
 using E_Learning.Domain.Entities;
 using E_Learning.Services.Models;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Identity;
 namespace E_Learning.Services.Interfaces;
 
-public class JwtTokensService : IJwtTokensService
+public class JwtTokensService(JwtSettings _jwtSettings, UserManager<ApplicationUser> _userManager) : IJwtTokensService
 {
-    private readonly JwtSettings _jwtSettings;
-    private readonly UserManager<ApplicationUser> _userManager;
-
-    public JwtTokensService(IOptions<JwtSettings> jwtOptions, UserManager<ApplicationUser> userManager)
-    {
-        _jwtSettings = jwtOptions.Value;
-        _userManager = userManager;
-    }
-
     /// <summary>
     /// Generates a JWT token for the specified application user.
     /// </summary>

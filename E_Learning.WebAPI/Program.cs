@@ -18,7 +18,7 @@ using System.Reflection;
 using E_Learning.Extensions.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
-using System.Text.Json.Serialization;
+using E_Learning.Repositories.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -99,6 +99,11 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies()); // Auto
 builder.Services.Configure<JwtSettings>(
     builder.Configuration.GetSection("JwtSettings")
 );
+
+//This adds JwtSettings directly to DI (needed for primary constructor injection)
+builder.Services.AddSingleton(
+    builder.Configuration.GetSection("JwtSettings").Get<JwtSettings>()
+);
 var jwtSettings = builder.Configuration.GetSection("JwtSettings").Get<JwtSettings>();
 builder.Services.AddAuthentication(options =>
 {
@@ -128,6 +133,10 @@ builder.Services.AddScoped<IUsersRepository, UsersRepository>();
 builder.Services.AddScoped<IJwtTokensService, JwtTokensService>();
 builder.Services.AddScoped<ICoursesRepository, CoursesRepository>();
 builder.Services.AddScoped<ICoursesService, CoursesService>();
+builder.Services.AddScoped<ICourseContentsRepository, CourseContentsRepository>();
+builder.Services.AddScoped<ICourseContentsService, CourseContentsService>();
+builder.Services.AddScoped<IEnrollmentsRepository, EnrollmentsRepository>();
+builder.Services.AddScoped<IEnrollmentsService, EnrollmentsService>();
 
 var app = builder.Build();
 
