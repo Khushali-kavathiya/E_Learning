@@ -34,6 +34,11 @@ public class E_LearningDbContext : IdentityDbContext<ApplicationUser>
     /// </summary>
     public DbSet<Enrollment> Enrollments { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Comments table.
+    /// </summary>
+    public DbSet<Comment> Comments { get; set; }
+
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
@@ -44,6 +49,6 @@ public class E_LearningDbContext : IdentityDbContext<ApplicationUser>
                .WithMany()
                .HasForeignKey(c => c.InstructorId)
                .OnDelete(DeleteBehavior.Restrict); // Prevent cascade delete on user deletion.
-
     }
+
 }

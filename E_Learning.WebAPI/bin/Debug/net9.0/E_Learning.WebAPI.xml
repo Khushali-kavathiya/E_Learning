@@ -4,6 +4,36 @@
         <name>E_Learning.WebAPI</name>
     </assembly>
     <members>
+        <member name="T:E_Learning.WebAPI.Contracts.CommentContract">
+            <summary>
+            CommentContract class for creating a comment.
+            </summary>
+        </member>
+        <member name="P:E_Learning.WebAPI.Contracts.CommentContract.CourseId">
+            <summary>
+            Course id on which the comment was made.
+            </summary>
+        </member>
+        <member name="P:E_Learning.WebAPI.Contracts.CommentContract.UserId">
+            <summary>
+            User id of the commenter.
+            </summary>
+        </member>
+        <member name="P:E_Learning.WebAPI.Contracts.CommentContract.content">
+            <summary>
+            Content of the comment.
+            </summary>
+        </member>
+        <member name="P:E_Learning.WebAPI.Contracts.CommentContract.CreatedAt">
+            <summary>
+            Creation date and time of the comment.
+            </summary>
+        </member>
+        <member name="P:E_Learning.WebAPI.Contracts.CommentContract.UpdatedAt">
+            <summary>
+            Update date and time of the comment.
+            </summary>
+        </member>
         <member name="T:E_Learning.WebAPI.Contracts.CourseContentContract">
             <summary>
             Contains information about a course content.
@@ -133,6 +163,46 @@
             <summary>
             Gets or sets the role of the user.
             </summary>
+        </member>
+        <member name="T:E_Learning.WebAPI.Controllers.CommentsController">
+            <summary>
+            Controller for managing comments.
+            </summary>
+        </member>
+        <member name="M:E_Learning.WebAPI.Controllers.CommentsController.#ctor(E_Learning.Services.Interfaces.ICommentService,AutoMapper.IMapper)">
+            <summary>
+            Controller for managing comments.
+            </summary>
+        </member>
+        <member name="M:E_Learning.WebAPI.Controllers.CommentsController.AddCommentAsync(System.Guid,E_Learning.WebAPI.Contracts.CommentContract)">
+            <summary>
+            Add a new comment to a course.
+            </summary>
+            <param name="courseId">The course id on which the comment is made.</param>
+            <param name="contract">The contract containing the comment details.</param>
+            <returns>The created comment if successful; otherwise, returns a BadRequest result with an error message.</returns>
+        </member>
+        <member name="M:E_Learning.WebAPI.Controllers.CommentsController.GetCommentsByCourseIdAsync(System.Guid)">
+            <summary>
+            Get all comments made on a specific course.
+            </summary>
+            <param name="courseId">The unique identifier of the course for which to retrieve comments.</param>
+            <returns>A task representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:E_Learning.WebAPI.Controllers.CommentsController.UpdateCommentAsync(System.Guid,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{E_Learning.WebAPI.Contracts.CommentContract})">
+            <summary>
+            Update an existing comment.
+            </summary>
+            <param name="commentId">The unique identifier of the comment to update.</param>
+            <param name="patchDocument"> The JSON patch document containing the updated properties.</param>
+            <returns>Returns the updated comment if successful; otherwise, returns a NotFound result with an error message.</returns>
+        </member>
+        <member name="M:E_Learning.WebAPI.Controllers.CommentsController.DeleteCommentAsync(System.Guid)">
+            <summary>
+            Deletes a specific comment.
+            </summary>
+            <param name="commentId">The unique identifier of the comment to delete.</param>
+            <returns>Returns Ok if successful; otherwise, returns a NotFound result with an error message.</returns>
         </member>
         <member name="T:E_Learning.WebAPI.Controllers.CourseContentsController">
             <summary>

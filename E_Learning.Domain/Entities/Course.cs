@@ -52,7 +52,7 @@ public class Course
 
 
     /// <summary>
-    /// 
+    /// Navigation property to the related instructor.
     /// </summary>
     public ApplicationUser Instructor { get; set; }
 }
