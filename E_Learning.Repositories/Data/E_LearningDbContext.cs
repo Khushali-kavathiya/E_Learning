@@ -39,6 +39,11 @@ public class E_LearningDbContext : IdentityDbContext<ApplicationUser>
     /// </summary>
     public DbSet<Comment> Comments { get; set; }
 
+    /// <summary>
+    /// Gets or sets the CourseRatings table.
+    /// </summary>
+    public DbSet<CourseRating> CourseRatings { get; set; }
+
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);

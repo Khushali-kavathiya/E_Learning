@@ -18,7 +18,7 @@ namespace E_Learning.WebAPI.Controllers
     [Route("[controller]")]
     public class CourseContentsController(ICourseContentsService _courseContentsService, IMapper _mapper) : ControllerBase
     {
-        
+
         /// <summary>
         /// Creates a new course content for a specific course.
         /// </summary>

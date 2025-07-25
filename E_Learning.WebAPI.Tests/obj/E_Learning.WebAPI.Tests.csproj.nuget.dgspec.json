@@ -93,9 +93,6 @@
             "projectReferences": {
               "/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Domain/E_Learning.Domain.csproj": {
                 "projectPath": "/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Domain/E_Learning.Domain.csproj"
-              },
-              "/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Services/E_Learning.Services.csproj": {
-                "projectPath": "/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Services/E_Learning.Services.csproj"
               }
             }
           }
@@ -254,6 +251,9 @@
             "projectReferences": {
               "/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Domain/E_Learning.Domain.csproj": {
                 "projectPath": "/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Domain/E_Learning.Domain.csproj"
+              },
+              "/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Extensions/E_Learning.Extensions.csproj": {
+                "projectPath": "/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Extensions/E_Learning.Extensions.csproj"
               },
               "/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Repositories/E_Learning.Repositories.csproj": {
                 "projectPath": "/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Repositories/E_Learning.Repositories.csproj"
@@ -447,6 +447,14 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
             "FluentValidation.AspNetCore": {
               "target": "Package",
               "version": "[11.3.1, )"

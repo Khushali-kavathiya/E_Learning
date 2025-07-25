@@ -93,6 +93,8 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<E_LearningDbContext>()
     .AddDefaultTokenProviders();
 
+
+// Register AutoMapper globally
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies()); // Automatically scan for profiles in the All assembly
 
 // Configure JWT authentication
@@ -139,6 +141,9 @@ builder.Services.AddScoped<IEnrollmentsRepository, EnrollmentsRepository>();
 builder.Services.AddScoped<IEnrollmentsService, EnrollmentsService>();
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
 builder.Services.AddScoped<ICommentService, CommentService>();
+builder.Services.AddScoped<ICourseRatingsRepository, CourseRatingsRepository>();
+builder.Services.AddScoped<ICourseRatingsService, CourseRatingsService>();
+
 
 var app = builder.Build();
 
