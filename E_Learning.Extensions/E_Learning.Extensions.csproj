@@ -12,9 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\E_Learning.Services\E_Learning.Services.csproj" />
-    <ProjectReference Include="..\E_Learning.Domain\E_Learning.Domain.csproj" />
- 
+    <ProjectReference Include="..\E_Learning.Domain\E_Learning.Domain.csproj" /> 
   </ItemGroup>
 
 </Project>

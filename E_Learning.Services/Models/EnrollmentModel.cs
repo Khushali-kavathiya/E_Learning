@@ -1,10 +1,13 @@
+using E_Learning.Domain.Entities;
+using E_Learning.Extensions.Mappings;
+
 namespace E_Learning.Services.Models
 {
 
     /// <summary>
     /// Represents an enrollment record for a user in a course.
     /// </summary>
-    public class EnrollmentModel
+    public class EnrollmentModel : IMapFrom<Enrollment>
     {
         /// <summary>
         /// Id of the enrolled user.

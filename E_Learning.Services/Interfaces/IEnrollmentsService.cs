@@ -32,14 +32,6 @@ namespace E_Learning.Services.Interfaces
         /// <returns>The updated enrollment model.</returns>
         Task UpdateEnrollmentAsync(Guid id, EnrollmentModel enrollmentModel);
 
-        // /// <summary>
-        // /// Partially updates an existing enrollment.
-        // /// </summary>
-        // /// <param name="id">The unique identifier of the enrollment.</param>
-        // /// <param name="model">The partial enrollment model containing the updated properties.</param>
-        // /// <returns>A task representing the asynchronous operation.</returns>
-        // Task PatchAsync(Guid id, EnrollmentModel model);
-
         /// <summary>
         /// Deletes an enrollment by its unique identifier.
         /// </summary>

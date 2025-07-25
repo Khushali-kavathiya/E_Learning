@@ -1,14 +1,19 @@
 using E_Learning.Extensions.Attributes;
+using E_Learning.Extensions.Mappings;
+using E_Learning.Services.Models;
 
 namespace E_Learning.WebAPI.Contracts
 {
-    public class EnrollmentContract
+    /// <summary>
+    /// EnrollmentContract class for creating an enrollment.
+    /// </summary>
+    public class EnrollmentContract : IMapFrom<EnrollmentModel>
     {
         /// <summary>
         /// Id of the enrolled user.
         /// </summary>
         [CreateOnly]
-        public string UserId { get; set; }
+        public string? UserId { get; set; }
 
         /// <summary>
         /// Id of the course the user is enrolled in.

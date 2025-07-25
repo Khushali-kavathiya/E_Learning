@@ -1,11 +1,13 @@
+using E_Learning.Domain.Entities;
 using E_Learning.Domain.Enums;
+using E_Learning.Extensions.Mappings;
 
 namespace E_Learning.Services.Models
 {
     /// <summary>
     /// Corresponds to a course content item within a course.
     /// </summary>
-    public class CourseContentModel
+    public class CourseContentModel : IMapFrom<CourseContent>
     {
         /// <summary>
         /// Get or sets the unique identifier of the course content item.

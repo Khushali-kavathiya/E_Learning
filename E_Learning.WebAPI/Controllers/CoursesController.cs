@@ -11,7 +11,7 @@ using E_Learning.Extensions.Helpers;
 namespace E_Learning.WebAPI.Controllers;
 
 /// <summary>
-/// Controller for managing Coursess.
+/// Controller for managing Courses.
 /// </summary>
 
 [ApiController]

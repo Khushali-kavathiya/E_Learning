@@ -1,9 +1,12 @@
+using E_Learning.Domain.Entities;
+using E_Learning.Extensions.Mappings;
+
 namespace E_Learning.Services.Models;
 
 /// <summary>
 /// Business model for creating a course.
 /// </summary>
-public class CourseModel
+public class CourseModel : IMapFrom<Course>
 {
     /// <summary>
     /// Title of the course.

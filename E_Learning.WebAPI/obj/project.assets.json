@@ -2492,7 +2492,6 @@
         "dependencies": {
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.1",
           "E_Learning.Domain": "1.0.0",
-          "E_Learning.Services": "1.0.0",
           "Microsoft.AspNetCore.Mvc": "2.3.0"
         },
         "compile": {
@@ -2523,6 +2522,7 @@
         "dependencies": {
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.1",
           "E_Learning.Domain": "1.0.0",
+          "E_Learning.Extensions": "1.0.0",
           "E_Learning.Repositories": "1.0.0",
           "Microsoft.IdentityModel.Tokens": "8.12.1",
           "System.IdentityModel.Tokens.Jwt": "8.12.1"
@@ -6316,6 +6316,8 @@
   },
   "projectFileDependencyGroups": {
     "net9.0": [
+      "AutoMapper >= 12.0.1",
+      "AutoMapper.Extensions.Microsoft.DependencyInjection >= 12.0.1",
       "E_Learning.Domain >= 1.0.0",
       "E_Learning.Extensions >= 1.0.0",
       "E_Learning.Repositories >= 1.0.0",
@@ -6386,6 +6388,14 @@
       "net9.0": {
         "targetAlias": "net9.0",
         "dependencies": {
+          "AutoMapper": {
+            "target": "Package",
+            "version": "[12.0.1, )"
+          },
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+            "target": "Package",
+            "version": "[12.0.1, )"
+          },
           "FluentValidation.AspNetCore": {
             "target": "Package",
             "version": "[11.3.1, )"

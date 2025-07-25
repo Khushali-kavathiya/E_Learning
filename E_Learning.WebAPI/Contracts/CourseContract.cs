@@ -1,31 +1,33 @@
 using E_Learning.Extensions.Attributes;
+using E_Learning.Extensions.Mappings;
+using E_Learning.Services.Models;
 
 namespace E_Learning.WebAPI.Contracts;
 
 /// <summary>
 /// Request DTO for creating a course.
 /// </summary>
-public class CourseContract
+public class CourseContract : IMapFrom<CourseModel>
 {
     /// <summary>
     /// Title of the course.
     /// </summary>
-    public string Title { get; set; }
+    public string? Title { get; set; }
 
     /// <summary>
     /// Description of the course content.
     /// </summary>
-    public string Description { get; set; }
+    public string? Description { get; set; }
 
     /// <summary>
     /// Level of the course (e.g., Beginner, Intermediate, Advanced).
     /// </summary>
-    public string Level { get; set; }
+    public string? Level { get; set; }
 
     /// <summary>
     /// Duration of the course (e.g., "5 hours").
     /// </summary>
-    public string Duration { get; set; }
+    public string? Duration { get; set; }
 
     /// <summary>
     /// Indicates whether the course is free.
