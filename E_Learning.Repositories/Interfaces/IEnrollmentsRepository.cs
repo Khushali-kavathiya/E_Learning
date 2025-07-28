@@ -38,5 +38,29 @@ namespace E_Learning.Repositories.Interfaces
         /// <param name="id">The unique identifier of the enrollment to delete.</param>
         /// <returns>A task that represents the asynchronous operation.</returns>
         Task DeleteEnrollmentAsync(Guid id);
+
+        /// <summary>
+        /// Get the enrollment for a specific course and user, or null if not found.
+        /// </summary>
+        /// <param name="courseId">The unique identifier of the course.</param>
+        /// <param name="userId">The unique identifier of the user.</param>
+        /// <returns>The enrollment entity if found; otherwise, null.</returns>
+        Task<Enrollment?> GetByCourseAndUserAsync(Guid courseId, string userId);
+
+        /// <summary>
+        /// Marks an enrollment as completed.
+        /// </summary>
+        /// <param name="courseId">The unique identifier of the course.</param>
+        /// <param name="userId">The unique identifier of the user.</param>
+        /// <returns>A task that represents the asynchronous operation.</returns>
+        Task<bool> MarkAsCompletedAsync(Guid courseId, string userId);
+
+        /// <summary>
+        /// Get the enrollment with the specified ID and user, or null if not found.
+        /// </summary>
+        /// <param name="enrollmentId">The unique identifier of the enrollment.</param>
+        /// <param name="userId">The unique identifier of the user.</param>
+        /// <returns>The enrollment entity if found; otherwise, null.</returns>
+        Task<Enrollment?> GetWithCourseAndUserAsync(Guid enrollmentId, string userId);
     }
 }

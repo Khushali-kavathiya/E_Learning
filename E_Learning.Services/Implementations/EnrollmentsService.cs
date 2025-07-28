@@ -3,6 +3,7 @@ using AutoMapper;
 using E_Learning.Domain.Entities;
 using E_Learning.Repositories.Interfaces;
 using E_Learning.Services.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace E_Learning.Services.Implementations
 {
@@ -37,18 +38,8 @@ namespace E_Learning.Services.Implementations
             if (enrollment == null)
                 throw new InvalidOperationException("Enrollment not found.");
             _mapper.Map(model, enrollment);
-            await _enrollmentsRepository.UpdateEnrollmentAsync(enrollment);    
+            await _enrollmentsRepository.UpdateEnrollmentAsync(enrollment);
         }
-
-        // /// <inheritdoc>
-        // public async Task PatchAsync(Guid id, EnrollmentModel model)
-        // {
-        //     var enrollment = await _enrollmentsRepository.GetEnrollmentByIdAsync(id);
-        //     if (enrollment == null)
-        //         throw new InvalidOperationException("Enrollment not found.");
-        //     _mapper.Map(model, enrollment);
-        //     await _enrollmentsRepository.UpdateEnrollmentAsync(enrollment);
-        // }
 
         /// <inheritdoc>
         public async Task<bool> DeleteEnrollmentAsync(Guid id)
@@ -58,6 +49,18 @@ namespace E_Learning.Services.Implementations
                 return false;
             await _enrollmentsRepository.DeleteEnrollmentAsync(id);
             return true;
+        }
+
+        /// <inheritdoc>
+        public async Task<bool> MarkCourseAsCompletedAsync(Guid courseId, string userId)
+        {
+            return await _enrollmentsRepository.MarkAsCompletedAsync(courseId, userId);
+        }
+
+        /// <inheritdoc>
+        public async Task<Enrollment?> GetEnrollmentWithUserAndCourseAsync(Guid enrollmentId, string userId)
+        {
+            return await _enrollmentsRepository.GetWithCourseAndUserAsync(enrollmentId, userId);
         }
     }
 }

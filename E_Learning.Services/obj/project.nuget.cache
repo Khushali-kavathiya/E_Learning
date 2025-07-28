@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "1lJl7hfY+zs=",
+  "dgSpecHash": "okPbOZX13OY=",
   "success": true,
   "projectFilePath": "/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.Services/E_Learning.Services.csproj",
   "expectedPackageFiles": [
@@ -91,6 +91,7 @@
     "/Users/khushalikavathiya/.nuget/packages/newtonsoft.json.bson/1.0.2/newtonsoft.json.bson.1.0.2.nupkg.sha512",
     "/Users/khushalikavathiya/.nuget/packages/npgsql/9.0.3/npgsql.9.0.3.nupkg.sha512",
     "/Users/khushalikavathiya/.nuget/packages/npgsql.entityframeworkcore.postgresql/9.0.4/npgsql.entityframeworkcore.postgresql.9.0.4.nupkg.sha512",
+    "/Users/khushalikavathiya/.nuget/packages/questpdf/2025.7.0/questpdf.2025.7.0.nupkg.sha512",
     "/Users/khushalikavathiya/.nuget/packages/runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl/4.3.0/runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "/Users/khushalikavathiya/.nuget/packages/runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl/4.3.0/runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "/Users/khushalikavathiya/.nuget/packages/runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl/4.3.0/runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
