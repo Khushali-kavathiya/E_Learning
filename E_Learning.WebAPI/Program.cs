@@ -128,6 +128,8 @@ builder.Services.AddAuthentication(options =>
 });
 builder.Services.AddAuthorization();
 
+// Register HttpContextAccessor for accessing HttpContext in services
+builder.Services.AddHttpContextAccessor();
 
 // Register Services 
 builder.Services.AddScoped<IUsersService, UsersService>();
@@ -143,6 +145,7 @@ builder.Services.AddScoped<ICommentRepository, CommentRepository>();
 builder.Services.AddScoped<ICommentService, CommentService>();
 builder.Services.AddScoped<ICourseRatingsRepository, CourseRatingsRepository>();
 builder.Services.AddScoped<ICourseRatingsService, CourseRatingsService>();
+builder.Services.AddScoped<ICertificatesService, CertificateService>();
 
 
 var app = builder.Build();

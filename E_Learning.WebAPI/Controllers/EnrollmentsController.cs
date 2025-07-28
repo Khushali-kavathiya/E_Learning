@@ -6,6 +6,7 @@ using E_Learning.Services.Models;
 using E_Learning.WebAPI.Contracts;
 using Microsoft.AspNetCore.JsonPatch;
 using E_Learning.Extensions.Helpers;
+using System.Security.Claims;
 
 namespace E_Learning.WebAPI.Controllers;
 
@@ -113,5 +114,33 @@ public class EnrollmentsController(IEnrollmentsService _service, IMapper _mapper
         var deleted = await _service.DeleteEnrollmentAsync(id);
         if (!deleted) return NotFound("Enrollment not found.");
         return Ok("Enrollment deleted successfully.");
+    }
+
+    [HttpPost("{courseId}/complete")]
+    public async Task<IActionResult> CompleteCourseAsync(Guid courseId)
+    {
+        var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        var success = await _service.MarkCourseAsCompletedAsync(courseId, userId!);
+
+        if (!success) return BadRequest("Course already completed or not enrolled.");
+        return Ok("Course completed successfully.");
+    }
+
+    [HttpGet("{enrollmentId}/certificate")]
+    public async Task<IActionResult> GetCertificateAsync(Guid enrollmentId, [FromServices] ICertificatesService certificatesService)
+    {
+        var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        var enrollment = await _service.GetEnrollmentWithUserAndCourseAsync(enrollmentId, userId!);
+        if (enrollment is null) return NotFound("Enrollment not found or not authorized to view certificate.");
+
+        var certificate = new CertificateModel
+        {
+            UserFullName = enrollment.User.FullName,
+            CourseTitle = enrollment.Course.Title,
+            CompletedAt = enrollment.CompletedAt!.Value
+        };
+
+        var pdfBytes = certificatesService.GenerateCertificate(certificate);
+        return File(pdfBytes, "application/pdf", "certificate.pdf");
     }
 }
