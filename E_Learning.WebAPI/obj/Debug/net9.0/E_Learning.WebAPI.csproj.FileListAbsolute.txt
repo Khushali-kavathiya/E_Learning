@@ -81,6 +81,7 @@
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/Npgsql.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/QuestPDF.dll
+/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/Scrutor.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/Swashbuckle.AspNetCore.Swagger.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/Swashbuckle.AspNetCore.SwaggerGen.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/bin/Debug/net9.0/Swashbuckle.AspNetCore.SwaggerUI.dll

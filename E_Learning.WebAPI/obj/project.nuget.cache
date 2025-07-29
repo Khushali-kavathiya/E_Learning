@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "3vg1LZspbjg=",
+  "dgSpecHash": "JjtHhxNvUJA=",
   "success": true,
   "projectFilePath": "/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI/E_Learning.WebAPI.csproj",
   "expectedPackageFiles": [
@@ -111,6 +111,7 @@
     "/Users/khushalikavathiya/.nuget/packages/npgsql/9.0.3/npgsql.9.0.3.nupkg.sha512",
     "/Users/khushalikavathiya/.nuget/packages/npgsql.entityframeworkcore.postgresql/9.0.4/npgsql.entityframeworkcore.postgresql.9.0.4.nupkg.sha512",
     "/Users/khushalikavathiya/.nuget/packages/questpdf/2025.7.0/questpdf.2025.7.0.nupkg.sha512",
+    "/Users/khushalikavathiya/.nuget/packages/scrutor/6.1.0/scrutor.6.1.0.nupkg.sha512",
     "/Users/khushalikavathiya/.nuget/packages/swashbuckle.aspnetcore/9.0.1/swashbuckle.aspnetcore.9.0.1.nupkg.sha512",
     "/Users/khushalikavathiya/.nuget/packages/swashbuckle.aspnetcore.swagger/9.0.1/swashbuckle.aspnetcore.swagger.9.0.1.nupkg.sha512",
     "/Users/khushalikavathiya/.nuget/packages/swashbuckle.aspnetcore.swaggergen/9.0.1/swashbuckle.aspnetcore.swaggergen.9.0.1.nupkg.sha512",

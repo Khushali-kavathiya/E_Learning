@@ -2,14 +2,9 @@ using E_Learning.Domain.Entities;
 using E_Learning.Repositories.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using E_Learning.Services.Interface;
-using E_Learning.Services.Implementations;
-using E_Learning.Repositories.Interface;
-using E_Learning.Repositories.Implementations;
 using FluentValidation.AspNetCore;
 using E_Learning.WebAPI.Validators;
 using E_Learning.WebAPI.Middlewares;
-using E_Learning.Services.Interfaces;
 using E_Learning.Services.Models;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -18,7 +13,6 @@ using System.Reflection;
 using E_Learning.Extensions.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
-using E_Learning.Repositories.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,7 +22,7 @@ builder.Services.AddControllers(options =>
     options.Conventions.Insert(0, new GlobalRoutePrefixConvention("api/v{version:apiVersion}"));
 })
 .AddNewtonsoftJson(options =>
-{   
+{
     // This is what fixes enum serialization when using Newtonsoft
     options.SerializerSettings.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter());
 }) // This is required for JsonPatchDocument
@@ -53,7 +47,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new() { Title = "E_Learning API", Version = "v1" });
-    
+
     // Configure JWT authentication UI in Swagger
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
@@ -131,22 +125,13 @@ builder.Services.AddAuthorization();
 // Register HttpContextAccessor for accessing HttpContext in services
 builder.Services.AddHttpContextAccessor();
 
-// Register Services 
-builder.Services.AddScoped<IUsersService, UsersService>();
-builder.Services.AddScoped<IUsersRepository, UsersRepository>();
-builder.Services.AddScoped<IJwtTokensService, JwtTokensService>();
-builder.Services.AddScoped<ICoursesRepository, CoursesRepository>();
-builder.Services.AddScoped<ICoursesService, CoursesService>();
-builder.Services.AddScoped<ICourseContentsRepository, CourseContentsRepository>();
-builder.Services.AddScoped<ICourseContentsService, CourseContentsService>();
-builder.Services.AddScoped<IEnrollmentsRepository, EnrollmentsRepository>();
-builder.Services.AddScoped<IEnrollmentsService, EnrollmentsService>();
-builder.Services.AddScoped<ICommentRepository, CommentRepository>();
-builder.Services.AddScoped<ICommentService, CommentService>();
-builder.Services.AddScoped<ICourseRatingsRepository, CourseRatingsRepository>();
-builder.Services.AddScoped<ICourseRatingsService, CourseRatingsService>();
-builder.Services.AddScoped<ICertificatesService, CertificateService>();
-
+// Automatic registering services using Scrutor package for scanning assemblies
+builder.Services.Scan(scan => scan
+    .FromApplicationDependencies(a => a.GetName().Name.StartsWith("E_Learning"))
+    .AddClasses(c => c.Where(t => t.Name.EndsWith("Service") || t.Name.EndsWith("Repository")))
+        .AsImplementedInterfaces()
+        .WithScopedLifetime()
+);
 
 var app = builder.Build();
 

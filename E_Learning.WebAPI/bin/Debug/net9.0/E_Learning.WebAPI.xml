@@ -552,6 +552,11 @@
             </summary>
             <param name="assembly">The assembly to scan for mapping configurations.</param>
         </member>
+        <member name="T:E_Learning.WebAPI.Mapping.CustomProfiles">
+            <summary>
+            custom profile for mapping.
+            </summary>
+        </member>
         <member name="T:E_Learning.WebAPI.Middlewares.ExceptionMiddleware">
             <summary>
             Middleware for globally handling unhandled exceptions in the application.

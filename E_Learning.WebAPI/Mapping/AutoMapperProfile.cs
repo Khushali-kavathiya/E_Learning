@@ -42,29 +42,18 @@ namespace E_Learning.WebAPI.Mapping
             // For each type, create mapping.
             foreach (var type in types)
             {
-                var instance = Activator.CreateInstance(type);
-                var methodInfo = type.GetMethod("Mapping");
-                if (methodInfo != null)
-                {
-                    // Call Mapping(this) to allow custom mapping logic.
-                    methodInfo.Invoke(instance, new object[] { this });
-                }
-                else
-                {
-                    // Get the IMapFrom<T> interface and extract the source type(T).
-                    var interfaceType = type.GetInterfaces()
-                        .First(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IMapFrom<>));
+                var interfaceType = type.GetInterfaces()
+                    .First(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IMapFrom<>));
 
-                    var sourceType = interfaceType.GetGenericArguments()[0];
+                var sourceType = interfaceType.GetGenericArguments()[0];
 
-                    // Create a bi-directional map between source and destination.
-                    var mapping = CreateMap(sourceType, type).ReverseMap();
+                // Create a bi-directional map between source and destination.
+                var mapping = CreateMap(sourceType, type).ReverseMap();
 
-                    // Skip mapping if the source member is null.
-                    mapping.ForAllMembers(opt =>
-                        opt.Condition((src, dest, srcMember) => srcMember != null)
-                    );
-                }
+                // Skip mapping if the source member is null.
+                mapping.ForAllMembers(opt =>
+                    opt.Condition((src, dest, srcMember) => srcMember != null)
+                );
             }
         }
     }
