@@ -8,7 +8,7 @@ namespace E_Learning.Repositories.Implementations;
 /// <inheritdoc />
 public class CoursesRepository(E_LearningDbContext _context) : ICoursesRepository
 {
-    
+
     /// <inheritdoc />
     public async Task AddAsync(Course course)
     {
@@ -27,8 +27,12 @@ public class CoursesRepository(E_LearningDbContext _context) : ICoursesRepositor
         => await _context.Courses.ToListAsync();
 
     /// <inheritdoc />
-    public async Task<Course> GetCourseByIdAsync(Guid courseId)
-        => await _context.Courses.FindAsync(courseId);
+    public async Task<Course?> GetCourseByIdAsync(Guid courseId)
+    {
+        return await _context.Courses
+            .Include(c => c.Instructor)
+            .FirstOrDefaultAsync(c => c.Id == courseId);
+    }
 
     /// <inheritdoc />
     public async Task UpdateAsync(Course course)

@@ -35,5 +35,13 @@ namespace E_Learning.Repositories.Interfaces
         /// <param name="ratingId">The unique identifier of the course rating to delete.</param>
         /// <returns>A task that represents the asynchronous operation.</returns>
         Task<bool> DeleteAsync(CourseRating rating);
+
+        /// <summary>
+        /// Gets the course rating for a specific user and course.
+        /// </summary>
+        /// <param name="userId">The unique identifier of the user.</param>
+        /// <param name="courseId">The unique identifier of the course.</param>
+        /// <returns>The course rating entity if found; otherwise, null.</returns>
+        Task<CourseRating?> GetRatingByUserAndCourseAsync(string userId, Guid courseId);
     }
 }
