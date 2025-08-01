@@ -52,7 +52,6 @@
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/Microsoft.CodeAnalysis.CSharp.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/Microsoft.CodeAnalysis.Razor.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/Microsoft.VisualStudio.CodeCoverage.Shim.dll
-/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/Microsoft.DotNet.PlatformAbstractions.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/Microsoft.EntityFrameworkCore.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/Microsoft.EntityFrameworkCore.Abstractions.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/Microsoft.EntityFrameworkCore.Relational.dll
@@ -88,6 +87,7 @@
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/Npgsql.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/QuestPDF.dll
+/Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/Scrutor.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/Swashbuckle.AspNetCore.Swagger.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/Swashbuckle.AspNetCore.SwaggerGen.dll
 /Users/khushalikavathiya/Desktop/E_Learning/E_Learning.WebAPI.Tests/bin/Debug/net9.0/Swashbuckle.AspNetCore.SwaggerUI.dll

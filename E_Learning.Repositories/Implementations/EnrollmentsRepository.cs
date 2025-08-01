@@ -70,5 +70,13 @@ namespace E_Learning.Repositories.Implementations
                                              .Include(e => e.User)
                                              .FirstOrDefaultAsync(e => e.Id == enrollmentId && e.UserId == userId && e.IsCompleted);
         }
+
+        /// <inheritdoc/>
+        public async Task<List<Enrollment>> GetEnrollmentsByCourseIdAsync(Guid courseId)
+        {
+            return await _context.Enrollments
+                                    .Where(e => e.CourseId == courseId)
+                                    .ToListAsync();
+        }
     }
 }

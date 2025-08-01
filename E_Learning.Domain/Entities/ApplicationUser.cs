@@ -8,4 +8,5 @@ public class ApplicationUser : IdentityUser
     /// FullName of the User.
     /// </summary>
     public string FullName { get; set; }
+
 }

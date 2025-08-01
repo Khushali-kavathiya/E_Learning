@@ -462,6 +462,37 @@
             <param name="id">The unique identifier of the enrollment to delete.</param>
             <returns>returns a NotFound result if the enrollment is not found; otherwise, returns an Ok result with a success message.</returns>
         </member>
+        <member name="T:E_Learning.WebAPI.Controllers.InstructorsDashboardController">
+            <summary>
+            InstructorsDashboardController class handles requests related to instructor dashboards.
+            </summary>
+        </member>
+        <member name="M:E_Learning.WebAPI.Controllers.InstructorsDashboardController.#ctor(E_Learning.Services.Interfaces.IInstructorsDashboardService)">
+            <summary>
+            InstructorsDashboardController class handles requests related to instructor dashboards.
+            </summary>
+        </member>
+        <member name="M:E_Learning.WebAPI.Controllers.InstructorsDashboardController.GetDashboard">
+            <summary>
+            Gets the instructor dashboard data for the currently logged-in instructor.
+            </summary>
+        </member>
+        <member name="T:E_Learning.WebAPI.Controllers.StudentsDashboardController">
+            <summary>
+            StudentsDashboardController class handles requests related to student dashboards.
+            </summary>
+        </member>
+        <member name="M:E_Learning.WebAPI.Controllers.StudentsDashboardController.#ctor(E_Learning.Services.Interfaces.IStudentDashboardService)">
+            <summary>
+            StudentsDashboardController class handles requests related to student dashboards.
+            </summary>
+        </member>
+        <member name="M:E_Learning.WebAPI.Controllers.StudentsDashboardController.GetStudentDashboard">
+            <summary>
+            Gets the student dashboard data for the currently logged-in student.
+            </summary>
+            <returns>The student dashboard model.</returns>
+        </member>
         <member name="T:E_Learning.WebAPI.Controllers.UsersController">
             <summary>
             UsersController class handles all user-related operations such as registration, login, profile updates,
@@ -551,6 +582,14 @@
             Automatically create bi-directional mappings with null-value skipping.
             </summary>
             <param name="assembly">The assembly to scan for mapping configurations.</param>
+        </member>
+        <member name="T:E_Learning.WebAPI.Mapping.CustomProfiles">
+            <summary>
+            custom profile for mapping.
+            </summary>
+        </member>
+        <member name="M:E_Learning.WebAPI.Mapping.CustomProfiles.#ctor">
+            Initializes a new instance of the <see cref="T:E_Learning.WebAPI.Mapping.CustomProfiles"/> class.
         </member>
         <member name="T:E_Learning.WebAPI.Middlewares.ExceptionMiddleware">
             <summary>

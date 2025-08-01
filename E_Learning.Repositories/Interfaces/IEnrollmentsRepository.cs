@@ -62,5 +62,12 @@ namespace E_Learning.Repositories.Interfaces
         /// <param name="userId">The unique identifier of the user.</param>
         /// <returns>The enrollment entity if found; otherwise, null.</returns>
         Task<Enrollment?> GetWithCourseAndUserAsync(Guid enrollmentId, string userId);
+
+        /// <summary>
+        /// Get all enrollments for a specific course.
+        /// </summary>
+        /// <param name="courseId">The unique identifier of the course.</param>
+        /// <returns>A list of enrollment entities.</returns>
+        Task<List<Enrollment>> GetEnrollmentsByCourseIdAsync(Guid couresId);
     }
 }

@@ -21,6 +21,7 @@
           "Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer": "5.1.0",
           "Microsoft.AspNetCore.OpenApi": "9.0.6",
           "Microsoft.EntityFrameworkCore.Design": "9.0.6",
+          "Scrutor": "6.1.0",
           "Swashbuckle.AspNetCore": "9.0.1"
         },
         "runtime": {
@@ -1316,6 +1317,18 @@
           }
         }
       },
+      "Scrutor/6.1.0": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.6",
+          "Microsoft.Extensions.DependencyModel": "9.0.6"
+        },
+        "runtime": {
+          "lib/net8.0/Scrutor.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.0.0"
+          }
+        }
+      },
       "Swashbuckle.AspNetCore/9.0.1": {
         "dependencies": {
           "Microsoft.Extensions.ApiDescription.Server": "8.0.0",
@@ -2273,6 +2286,13 @@
       "sha512": "sha512-yRjdm7p300eEuy4Mi9YdMuecl2cvTU/CV+IHHDzw22Uf43/0C2zeG4c+MthZqkpQNJPg0Agha1iBSmLBxX1vHA==",
       "path": "questpdf/2025.7.0",
       "hashPath": "questpdf.2025.7.0.nupkg.sha512"
+    },
+    "Scrutor/6.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-m4+0RdgnX+jeiaqteq9x5SwEtuCjWG0KTw1jBjCzn7V8mCanXKoeF8+59E0fcoRbAjdEq6YqHFCmxZ49Kvqp3g==",
+      "path": "scrutor/6.1.0",
+      "hashPath": "scrutor.6.1.0.nupkg.sha512"
     },
     "Swashbuckle.AspNetCore/9.0.1": {
       "type": "package",

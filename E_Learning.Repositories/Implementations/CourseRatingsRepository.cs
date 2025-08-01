@@ -44,5 +44,8 @@ namespace E_Learning.Repositories.Implementations
             return await _context.SaveChangesAsync() > 0;
         }
 
+        /// <inheritdoc />
+        public async Task<CourseRating?> GetRatingByUserAndCourseAsync(string userId, Guid courseId)
+            => await _context.CourseRatings.FirstOrDefaultAsync(r => r.UserId == userId && r.CourseId == courseId);
     }
 }
