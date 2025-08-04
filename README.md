@@ -78,12 +78,12 @@ dotnet test
 🛡️ Technologies Used
 | Layer          | Technology                |
 | -------------- | ------------------------- |
-| Backend        | ASP.NET Core(.NET 9) |
+| Backend        | ASP.NET Core(.NET 9)      |
 | ORM            | Entity Framework Core     |
 | Authentication | JWT / ASP.NET Identity    |
 | Database       | Postgresql                |
 | Testing        | xUnit / Moq               |
-| Dev Tools      | Visual Studio, GitHub     |
+| Dev Tools      | VS code, GitHub           |
 
 🤝 Contributing
 Contributions are welcome! 🙌
