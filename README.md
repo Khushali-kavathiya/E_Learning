@@ -58,8 +58,9 @@ Make sure you have the following installed:
 
 ## ⚙️ Installation
 
+```bash
 # 📥 Step 1: Clone the Repository
-git clone https://github.com/your-username/elearning.git
+git clone [https://github.com/your-username/elearning.git](https://github.com/Khushali-kavathiya/E_Learning.git)
 cd elearning
 
 # 📦 Step 2: Restore Dependencies
