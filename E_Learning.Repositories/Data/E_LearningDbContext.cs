@@ -44,6 +44,21 @@ public class E_LearningDbContext : IdentityDbContext<ApplicationUser>
     /// </summary>
     public DbSet<CourseRating> CourseRatings { get; set; }
 
+    /// <summary>
+    /// Gets or sets the CourseQuizzes table.
+    /// </summary>
+    public DbSet<CourseQuiz> CourseQuizzes { get; set; }
+
+    /// <summary>
+    /// Gets or sets the QuizQuestions table.
+    /// </summary>
+    public DbSet<QuizQuestion> QuizQuestions { get; set; }
+    
+    /// <summary>
+    /// Gets or sets the QuizOptions table.
+    /// </summary>
+    public DbSet<QuizOption> QuizOptions { get; set; }
+
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);

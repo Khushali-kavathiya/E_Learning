@@ -27,6 +27,18 @@ namespace E_Learning.WebAPI.Mapping
                .ForMember(dest => dest.CourseId, opt => opt.MapFrom(src => src.Id))
                .ForMember(dest => dest.InstructorName, opt => opt.MapFrom(src => src.Instructor.FullName));
 
+            // Map CourseContent to CourseContentContract using AutoMapper.
+            CreateMap<CourseQuiz, CourseQuizModel>()
+                .ForMember(dest => dest.QuizId, opt => opt.MapFrom(src => src.Id));
+
+            // Map CourseContent to CourseContentContract using AutoMapper.
+            CreateMap<QuizQuestion, QuizQuestionModel>()
+                .ForMember(dest => dest.QuestionId, opt => opt.MapFrom(src => src.Id));
+
+            // Map CourseContent to CourseContentContract using AutoMapper.
+            CreateMap<QuizOption, QuizOptionModel>()
+                .ForMember(dest => dest.OptionId, opt => opt.MapFrom(src => src.Id));    
+
         }
     }
 }
