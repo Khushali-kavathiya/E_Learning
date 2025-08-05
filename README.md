@@ -24,7 +24,7 @@ The E-Learning backend provides a clean separation of concerns using:
 
 - 🧱 **Modular Architecture** – Domain, Data, and Service layers  
 - 🔐 **Role-Based Security** – JWT authentication & role management  
-- 📁 **Content Management** – Courses, videos, PDFs, quizzes  
+- 📁 **Content Management** – Courses, videos, PDFs, quizzes (manual & AI-generated)
 - 🧪 **Testing Support** – Built-in testing with reliable tools  
 - ⚙️ **Validation & Mapping** – Ensures data integrity across layers  
 - 🌐 **API-Driven** – Comprehensive RESTful endpoints  
@@ -37,7 +37,8 @@ This project simplifies the foundation of modern e-learning applications by focu
 
 - ✅ Reusable & scalable backend code  
 - ✅ Secure login & access control  
-- ✅ Structured content delivery  
+- ✅ Structured content delivery
+- ✅ AI-powered quiz creation from course content  
 - ✅ Extendable modular structure  
 - ✅ Easy integration with frontend clients  
 
@@ -84,6 +85,8 @@ dotnet test
 | Database       | Postgresql                |
 | Testing        | xUnit / Moq               |
 | Dev Tools      | VS code, GitHub           |
+| AI Integration | OpenRouter API (GPT /     |
+|                |             Gemma models) |
 
 🤝 Contributing
 Contributions are welcome! 🙌
