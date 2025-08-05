@@ -125,6 +125,7 @@ builder.Services.AddAuthorization();
 // Register HttpContextAccessor for accessing HttpContext in services
 builder.Services.AddHttpContextAccessor();
 
+
 // Automatic registering services using Scrutor package for scanning assemblies
 builder.Services.Scan(scan => scan
     .FromApplicationDependencies(a => a.GetName().Name.StartsWith("E_Learning"))
@@ -132,6 +133,9 @@ builder.Services.Scan(scan => scan
         .AsImplementedInterfaces()
         .WithScopedLifetime()
 );
+
+// Register HttpClient for making HTTP requests
+builder.Services.AddHttpClient();
 
 var app = builder.Build();
 
