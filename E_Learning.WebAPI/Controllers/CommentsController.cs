@@ -16,7 +16,7 @@ namespace E_Learning.WebAPI.Controllers
     /// </summary>
     [ApiController]
     [ApiVersion("1.0")]
-    [Route("[controller]")]
+    [Route("course/{courseId}/[controller]")]
     [Authorize]
     public class CommentsController(ICommentService _commentService, IMapper _mapper) : ControllerBase
     {
@@ -27,7 +27,7 @@ namespace E_Learning.WebAPI.Controllers
         /// <param name="courseId">The course id on which the comment is made.</param>
         /// <param name="contract">The contract containing the comment details.</param>
         /// <returns>The created comment if successful; otherwise, returns a BadRequest result with an error message.</returns>
-        [HttpPost("{courseId}")]
+        [HttpPost]
         public async Task<IActionResult> AddCommentAsync(Guid courseId, [FromBody] CommentContract contract)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -46,7 +46,7 @@ namespace E_Learning.WebAPI.Controllers
         /// </summary>
         /// <param name="courseId">The unique identifier of the course for which to retrieve comments.</param>
         /// <returns>A task representing the asynchronous operation.</returns>
-        [HttpGet("{courseId}")]
+        [HttpGet]
         public async Task<IActionResult> GetCommentsByCourseIdAsync(Guid courseId)
         {
             var result = await _commentService.GetCommentsByCourseIdAsync(courseId);
