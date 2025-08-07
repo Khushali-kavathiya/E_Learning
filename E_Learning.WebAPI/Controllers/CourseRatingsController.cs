@@ -14,7 +14,7 @@ namespace E_Learning.WebAPI.Controllers
     /// </summary>
     [ApiController]
     [ApiVersion("1.0")]
-    [Route("[controller]")]
+    [Route("course/{courseId}/[controller]")]
     [Authorize]
     public class CourseRatingsController(ICourseRatingsService _courseRatingsService, IMapper _mapper) : ControllerBase
     {

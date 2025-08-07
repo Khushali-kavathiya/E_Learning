@@ -16,7 +16,9 @@ namespace E_Learning.WebAPI.Mapping
         /// </summary>
         public AutoMapperProfile()
         {
-            var assemblies = AppDomain.CurrentDomain.GetAssemblies();
+            var assemblies = AppDomain.CurrentDomain.GetAssemblies()
+                    .Where(a => !a.IsDynamic && a.FullName.StartsWith("E_Learning"))
+                    .ToArray();
 
             foreach (var assembly in assemblies)
             {

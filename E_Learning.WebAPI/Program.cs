@@ -29,7 +29,6 @@ builder.Services.AddControllers(options =>
 .AddFluentValidation(config =>
 {
     config.RegisterValidatorsFromAssemblyContaining<UserContractValidator>();
-    config.RegisterValidatorsFromAssemblyContaining<CourseContractValidator>();
 });
 
 
